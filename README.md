@@ -1,1 +1,1 @@
-配合[AI](deepwiki.com/KalimiaChen/MaaStudy)食用！
+配合[AI](https://deepwiki.com/KalimiaChen/MaaStudy)食用！
