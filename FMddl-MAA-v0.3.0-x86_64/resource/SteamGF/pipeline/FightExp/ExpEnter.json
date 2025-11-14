@@ -1,0 +1,310 @@
+{
+    "ExpFight": {
+        "action": {
+            "type": "Click",
+            "param": {
+                "target" : [
+                    444,
+                    172,
+                    127,
+                    130
+                ]
+            }
+        },
+        "next": [
+            "ExpEnter_ClickFight",
+            "ExpRecycle_ESC"
+        ],
+        "interrupt": [
+            "Assignment_Again",
+            "Reward",
+            "GetGirl",
+            "ReturnHome"
+        ]
+    },
+    "ExpEnter_ClickFight": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    561,
+                    195,
+                    591,
+                    453
+                ],
+                "expected": [
+                    "战斗"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ExpEnter_Ep",
+            "ExpEnter_EpReset",
+            "ExpEnter_Combat",
+            "ExpEnter_ClickFight"
+        ]
+    },
+    "ExpEnter_Combat": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    0,
+                    63,
+                    303,
+                    657
+                ],
+                "expected": [
+                    "作战任",
+                    "战任务"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ExpEnter_Ep",
+            "ExpEnter_EpReset"
+        ]
+    },
+    "ExpEnter_EpReset": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    374,
+                    101,
+                    842,
+                    618
+                ],
+                "expected": [
+                    "难度选",
+                    "度选择",
+                    "普通"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin" : [
+                    241,
+                    156,
+                    1,
+                    1
+                ],
+                "end" : [
+                    243,
+                    630,
+                    1,
+                    1
+                ]
+            }
+        },
+        "next": [
+            "ExpEnter_Ep",
+            "ExpEnter_EpSwipe",
+            "ExpEnter_EpReset",
+            "ExpEnter_Combat"
+        ]
+    },
+    "ExpEnter_EpSwipe": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    374,
+                    101,
+                    842,
+                    618
+                ],
+                "expected": [
+                    "难度选",
+                    "度选择",
+                    "普通"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin" : [
+                    241,
+                    630,
+                    1,
+                    1
+                ],
+                "end" : [
+                    243,
+                    530,
+                    1,
+                    1
+                ]
+            }
+        },
+        "next": [
+            "ExpEnter_Ep",
+            "ExpEnter_EpSwipe",
+            "ExpEnter_EpReset",
+            "ExpEnter_Combat"
+        ]
+    },
+    "ExpEnter_Ep": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    75,
+                    33,
+                    293,
+                    687
+                ],
+                "expected": [
+"第十三"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ExpEnter_Difficulty",
+            "ExpEnter_Ep",
+            "ExpEnter_EpReset",
+            "ExpEnter_Combat"
+        ]
+    },
+    "ExpEnter_Difficulty": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    350,
+                    101,
+                    1550,
+                    618
+                ],
+                "expected": [
+"普通",
+"NORMAL"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ExpEnter_Stage8.1n",
+            "ExpEnter_Stage13.4",
+            "ExpEnter_Difficulty",
+            "ExpEnter_Combat"
+        ]
+    },
+    "ExpEnter_Stage8.1n": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    349,
+                    179,
+                    867,
+                    540
+                ],
+                "template": [
+                    "Fight/Stage8.1n.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ExpEnter_EnterStage8.1n",
+            "ExpEnter_Stage8.1n",
+            "ExpEnter_Combat"
+        ]
+    },
+    "ExpEnter_EnterStage8.1n": {
+        "post_delay": 5000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    429,
+                    188,
+                    787,
+                    531
+                ],
+                "expected": [
+                    "普通作",
+                    "通作战"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "8.1nFairy_Prepare",
+            "8.1nFairy_SwipetoAirport",
+            "ExpEnter_EnterStage8.1n",
+            "ExpEnter_Stage8.1n",
+            "ExpRecycle"
+        ]
+    },
+    "ExpEnter_Stage13.4": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    349,
+                    179,
+                    867,
+                    540
+                ],
+                "template": [
+                    "Fight/Stage13.4.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ExpEnter_EnterStage13.4",
+            "ExpEnter_Stage13.4",
+            "ExpEnter_Combat"
+        ]
+    },
+    "ExpEnter_EnterStage13.4": {
+        "post_delay": 5000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    429,
+                    188,
+                    787,
+                    531
+                ],
+                "expected": [
+                    "普通作",
+                    "通作战"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "13.4_Prepare_ClickHeadquarters",
+            "ExpEnter_EnterStage13.4",
+            "ExpEnter_Stage13.4",
+            "ExpRecycle"
+        ]
+    }
+}

@@ -1,0 +1,277 @@
+{
+    "EventSalvage": {
+        "action": {
+            "type": "Click",
+            "param": {
+                "target" : [
+                    444,
+                    172,
+                    127,
+                    130
+                ]
+            }
+        },
+        "next": [
+            "Event_Entrance",
+            "Event_Difficulty",
+            "Event_SwipeL",
+            "EventRecycle_ESC"
+        ],
+        "interrupt": [
+            "Assignment_Again",
+            "Reward",
+            "GetGirl",
+            "ReturnHome"
+        ]
+    },
+    "Event_Entrance": {
+        "post_delay": 3000,
+        "recognition": {
+        "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    786,
+                    327,
+                    493,
+                    317
+                ],
+            "template": [
+                "EventNow/EventEntrance.png"
+            ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "Event_Entrance",
+            "Event_Difficulty",
+            "Event_SalvageStage",
+            "Event_SwipeL"
+        ],
+        "interrupt": [
+            "Assignment_Again",
+            "Reward",
+            "GetGirl"
+        ]
+    },
+    "Event_Difficulty": {
+        "doc": "普通、困难、噩梦，要打哪个就OCR其余的，并执行Click",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    105,
+                    619,
+                    148,
+                    101
+                ],
+                "expected": [
+                    "普通",
+                    "困难"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "Event_Difficulty",
+            "Event_SalvageStage",
+            "Event_SwipeL"
+        ]
+    },
+    "Event_SwipeL": {
+        "doc": "拉到活动最左侧",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    728,
+                    0,
+                    551,
+                    230
+                ],
+                "expected": [
+                    "章节",
+                    "进度"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin" : [
+                    377,
+                    389,
+                    1,
+                    1
+                ],
+                "end" : [
+                    1176,
+                    389,
+                    1,
+                    1
+                ]
+            }
+        },
+        "next": [
+            "Event_SalvageStage",
+            "Event_FirstStage",
+            "Event_SwipeL"
+        ]
+    },
+    "Event_FirstStage": {
+        "pre_wait_freezes": 100,
+        "post_wait_freezes": 100,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    0,
+                    220,
+                    1280,
+                    335
+                ],
+                "expected": [
+"灰烬",
+"灰炽",
+"烬天",
+"炽天",
+"天堂"
+                ]
+            }
+        },
+        "next": [
+            "Event_SalvageStage",
+            "Event_SwipetoTarget"
+        ]
+    },
+    "Event_SwipetoTarget": {
+        "doc": "识别章节进度",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    728,
+                    0,
+                    551,
+                    230
+                ],
+                "expected": [
+                    "章节",
+                    "进度"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin" : [
+                    824,
+                    379,
+                    1,
+                    1
+                ],
+                "end" : [
+                    732,
+                    378,
+                    1,
+                    1
+                ]
+            }
+        },
+        "next": [
+            "Event_SalvageStage",
+            "Event_SwipetoTarget"
+        ]
+    },
+    "Event_SalvageStage": {
+        "rate_limit": 300,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [0,320,1280,235],
+                "expected": [
+"真空湮",
+"真空灭",
+"湮灭"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "Event_SalvageStage",
+            "Event_CheckSalvageGirl",
+            "Event_CheckSalvageList",
+            "EventSalvage_Enter"
+        ]
+    },
+    "Event_CheckSalvageList": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    333,
+                    96,
+                    946,
+                    503
+                ],
+                "expected": [
+                    "可能",
+                    "掉落"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "Event_CheckSalvageGirl",
+            "Event_CheckSalvageList",
+            "Event_SalvageStage"
+            
+        ]
+    },
+    "Event_CheckSalvageGirl": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [500,100,800,300],
+                "template": [
+                    "EventNow/EventSalvageGirl.png"
+                ]
+            }
+        },
+        "next": [
+            "EventSalvage_Enter",
+            "Event_CheckSalvageList"
+        ]
+    },
+    "EventSalvage_Enter": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    300,
+                    96,
+                    1400,
+                    503
+                ],
+                "expected": [
+                    "认出击"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "EventRecycle",
+            "EventSalvage_SwipetoAirport",
+            "EventSalvage_Enter"
+        ]
+    }
+}

@@ -1,0 +1,339 @@
+{
+    "itemBox": {
+        "doc": "准备开始处理道具箱",
+        "next": [
+            "selectItemBoxTab"
+        ]
+    },
+    "selectItemBoxTab": {
+        "doc": "选择道具箱标签页",
+        "recognition": "TemplateMatch",
+        "template": [
+            "仓库/道具箱.png"
+        ],
+        "action": "Click",
+        "green_mask": true,
+        "post_wait_freezes": 500,
+        "next": [
+            "itemBoxTabSelected"
+        ]
+    },
+    "itemBoxTabSelected": {
+        "doc": "道具箱标签页已选中",
+        "recognition": "OCR",
+        "expected": "道具箱",
+        "next": [
+            "tryToOpenItemBox"
+        ]
+    },
+    "tryToOpenItemBox": {
+        "doc": "寻找潜在的可开启道具箱",
+        "next": [
+            "openSupplySupportBox",
+            "选中奇忆甄选箱子",
+            "选中生长数据礼箱",
+            "openItemBoxCompleted"
+        ]
+    },
+    "openSupplySupportBox": {
+        "doc": "开启物资助力箱",
+        "recognition": "TemplateMatch",
+        "template": [
+            "仓库/物资助力箱.png"
+        ],
+        "roi": [
+            127,
+            126,
+            655,
+            402
+        ],
+        "action": "Click",
+        "threshold": 0.3,
+        "post_wait_freezes": 500,
+        "next": [
+            "useSupplySupportBoxItem"
+        ]
+    },
+    "useSupplySupportBoxItem": {
+        "doc": "使用物资助力箱",
+        "recognition": "OCR",
+        "expected": "使用",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "chooseSupplySupportBoxItem"
+        ]
+    },
+    "chooseSupplySupportBoxItem": {
+        "doc": "选择道具",
+        "recognition": "OCR",
+        "expected": "战场报告",
+        "action": "Click",
+        "target": true,
+        "post_wait_freezes": 500,
+        "next": [
+            "setSupplySupportBoxNumber"
+        ]
+    },
+    "setSupplySupportBoxNumber": {
+        "doc": "设置数量",
+        "recognition": "OCR",
+        "expected": "最大",
+        "action": "Click",
+        "target": true,
+        "post_wait_freezes": 500,
+        "next": [
+            "confirmSupplySupportBox"
+        ]
+    },
+    "confirmSupplySupportBox": {
+        "doc": "确认",
+        "recognition": "OCR",
+        "expected": "确认",
+        "action": "Click",
+        "target": true,
+        "post_wait_freezes": 500,
+        "next": [
+            "closeSupplySupportBoxResultPage"
+        ]
+    },
+    "closeSupplySupportBoxResultPage": {
+        "doc": "关闭结果页面",
+        "recognition": "OCR",
+        "expected": "点击空白处关闭",
+        "action": "Click",
+        "target": true,
+        "post_wait_freezes": 500,
+        "next": [
+            "tryToOpenItemBox"
+        ]
+    },
+    "选中生长数据礼箱": {
+        "next": [
+            "选中生长数据礼箱-候选1",
+            "openItemBoxCompleted"
+        ]
+    },
+    "选中生长数据礼箱-候选1": {
+        "recognition": "TemplateMatch",
+        "index": 0,
+        "template": [
+            "仓库/顶级生长数据随机箱.png"
+        ],
+        "green_mask": true,
+        "order_by": "Score",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "确认是顶级生长数据随机箱-候选1",
+            "选中生长数据礼箱-候选2",
+            "选中生长数据礼箱-候选3",
+            "选中生长数据礼箱-候选4",
+            "openItemBoxCompleted"
+        ]
+    },
+    "选中生长数据礼箱-候选2": {
+        "recognition": "TemplateMatch",
+        "index": 1,
+        "template": [
+            "仓库/顶级生长数据随机箱.png"
+        ],
+        "green_mask": true,
+        "order_by": "Score",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "确认是顶级生长数据随机箱-候选2",
+            "选中生长数据礼箱-候选3",
+            "选中生长数据礼箱-候选4",
+            "openItemBoxCompleted"
+        ]
+    },
+    "选中生长数据礼箱-候选3": {
+        "recognition": "TemplateMatch",
+        "index": 2,
+        "template": [
+            "仓库/顶级生长数据随机箱.png"
+        ],
+        "green_mask": true,
+        "order_by": "Score",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "确认是顶级生长数据随机箱-候选3",
+            "选中生长数据礼箱-候选4",
+            "openItemBoxCompleted"
+        ]
+    },
+    "选中生长数据礼箱-候选4": {
+        "recognition": "TemplateMatch",
+        "index": 3,
+        "template": [
+            "仓库/顶级生长数据随机箱.png"
+        ],
+        "green_mask": true,
+        "order_by": "Score",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "确认是顶级生长数据随机箱-候选4",
+            "openItemBoxCompleted"
+        ]
+    },
+    "确认是顶级生长数据随机箱-候选1": {
+        "recognition": "OCR",
+        "expected": "顶级生长数据随机箱",
+        "post_wait_freezes": 500,
+        "next": [
+            "useFlowerBoxItem"
+        ]
+    },
+    "确认是顶级生长数据随机箱-候选2": {
+        "recognition": "OCR",
+        "expected": "顶级生长数据随机箱",
+        "post_wait_freezes": 500,
+        "next": [
+            "useFlowerBoxItem"
+        ]
+    },
+    "确认是顶级生长数据随机箱-候选3": {
+        "recognition": "OCR",
+        "expected": "顶级生长数据随机箱",
+        "post_wait_freezes": 500,
+        "next": [
+            "useFlowerBoxItem"
+        ]
+    },
+    "确认是顶级生长数据随机箱-候选4": {
+        "recognition": "OCR",
+        "expected": "顶级生长数据随机箱",
+        "post_wait_freezes": 500,
+        "next": [
+            "useFlowerBoxItem"
+        ]
+    },
+    "useFlowerBoxItem": {
+        "doc": "使用顶级生长数据随机箱",
+        "recognition": "OCR",
+        "expected": "使用",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "doubleCheckFlowerBox",
+            "closeNotTopDataBoxPage",
+            "tryToOpenItemBox"
+        ]
+    },
+    "closeNotTopDataBoxPage": {
+        "doc": "非顶级数据随机箱子页面关闭",
+        "recognition": "OCR",
+        "expected": "取消",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "closeNotTopDataBoxPage",
+            "openItemBoxCompleted"
+        ]
+    },
+    "doubleCheckFlowerBox": {
+        "doc": "确认是顶级生长数据随机箱",
+        "recognition": "OCR",
+        "expected": "顶级生长数据随机箱",
+        "post_wait_freezes": 500,
+        "next": [
+            "setFlowerBoxNumber",
+            "confirmFlowerBox"
+        ]
+    },
+    "setFlowerBoxNumber": {
+        "doc": "设置数量",
+        "recognition": "OCR",
+        "expected": "最大",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "confirmFlowerBox"
+        ]
+    },
+    "confirmFlowerBox": {
+        "doc": "开箱子",
+        "recognition": "OCR",
+        "expected": "开启",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "closeFlowerBoxResultPage"
+        ]
+    },
+    "closeFlowerBoxResultPage": {
+        "doc": "关闭结果页面",
+        "recognition": "OCR",
+        "expected": "点击空白处关闭",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "openItemBoxCompleted"
+        ]
+    },
+    "选中奇忆甄选箱子": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "仓库/奇忆甄选火线.png",
+            "仓库/奇忆甄选暗流.png",
+            "仓库/奇忆甄选信念.png"
+        ],
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "使用奇忆甄选箱子"
+        ]
+    },
+    "使用奇忆甄选箱子": {
+        "recognition": "OCR",
+        "expected": "使用",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "设置奇忆甄选箱子使用数量"
+        ]
+    },
+    "设置奇忆甄选箱子使用数量": {
+        "recognition": "OCR",
+        "expected": "最大",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "确认开启奇忆甄选箱子"
+        ]
+    },
+    "确认开启奇忆甄选箱子": {
+        "recognition": "OCR",
+        "expected": "开启",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "关闭奇忆甄选箱子打开结果"
+        ]
+    },
+    "关闭奇忆甄选箱子打开结果": {
+        "recognition": "OCR",
+        "expected": "点击空白处关闭",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "tryToOpenItemBox"
+        ]
+    },
+    "openItemBoxCompleted": {
+        "doc": "没有可以开的箱子了，开启道具箱完成",
+        "next": [
+            "exitItemBox"
+        ]
+    },
+    "exitItemBox": {
+        "doc": "退出仓库",
+        "next": [
+            "returnToHomePage"
+        ]
+    }
+}

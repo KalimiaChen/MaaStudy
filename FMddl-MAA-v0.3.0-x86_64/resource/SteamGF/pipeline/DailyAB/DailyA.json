@@ -1,0 +1,373 @@
+{
+    "DailyA": {
+        "action": {
+            "type": "Click",
+            "param": {
+                "target" : [
+                    444,
+                    172,
+                    127,
+                    130
+                ]
+            }
+        },
+        "next": [
+            "DailyA_ClickFight",
+            "DailyA_Simulation",
+            "DailyA_Swipe"
+        ],
+        "interrupt": [
+            "Assignment_Again",
+            "Reward",
+            "GetGirl",
+            "ReturnHome"
+        ]
+    },
+    "DailyA_ClickFight": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    561,
+                    195,
+                    591,
+                    453
+                ],
+                "expected": [
+                    "战斗"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "DailyA_ClickFight",
+            "DailyA_Simulation",
+            "DailyA_Swipe"
+        ],
+        "interrupt": [
+            "Assignment_Again",
+            "Reward",
+            "GetGirl"
+        ]
+    },
+    "DailyA_Simulation": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    0,
+                    63,
+                    303,
+                    657
+                ],
+                "expected": [
+                    "模拟作战",
+                    "Simulation"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "DailyA_Swipe",
+            "DailyA_Simulation"
+        ],
+        "interrupt": [
+            "Assignment_Again",
+            "Reward"
+        ]
+    },
+    "DailyA_Swipe": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    667,
+                    65,
+                    287,
+                    177
+                ],
+                "expected": [
+                    "基础动能",
+                    "基础势能"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin" : [
+                    241,
+                    156,
+                    1,
+                    1
+                ],
+                "end" : [
+                    243,
+                    630,
+                    1,
+                    1
+                ]
+            }
+        },
+        "next": [
+            "DailyA_Selection"
+        ]
+    },
+    "DailyA_Selection": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    75,
+                    33,
+                    293,
+                    687
+                ],
+                "expected": [
+                    "资料采样"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "DailyA_Difficulty"
+        ]
+    },
+    "DailyA_Difficulty": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    502,
+                    247,
+                    337,
+                    371
+                ],
+                "expected": [
+                    "高级"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "DailyA_Difficulty",
+            "DailyA_ClickKinetic"
+        ]
+    },
+    "DailyA_ClickKinetic": {
+        "post_wait_freezes": 500,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    600,
+                    300,
+                    680,
+                    400
+                ],
+                "template": [
+                    "DailyAB/DailyABasicKineticEnergy.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "DailyA_Difficulty",
+            "DailyA_TimeAll",
+            "DailyA_TimeAuto"
+        ]
+    },
+    "DailyA_TimeAll": {
+        "enabled": false,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    626,
+                    487,
+                    593,
+                    232
+                ],
+                "template": [
+                    "DailyAB/DailyABTimeMinus.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "DailyA_None",
+            "DailyA_Start"
+        ]
+    },
+    "DailyA_TimeAuto": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    626,
+                    487,
+                    593,
+                    232
+                ],
+                "template": [
+                    "DailyAB/DailyABTimePlus.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "DailyA_TimeEnough",
+            "DailyA_None",
+            "DailyA_TimeAuto"
+        ]
+    },
+    "DailyA_TimeEnough": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    772,
+                    330,
+                    178,
+                    75
+                ],
+                "expected": [
+                    "12"
+                ]
+            }
+        },
+        "next": [
+            "DailyA_Start"
+        ]
+    },
+    "DailyA_Start": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    689,
+                    412,
+                    408,
+                    281
+                ],
+                "expected": [
+                    "智能扫荡"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "DailyA_ButtonYes",
+            "DailyA_Start",
+            "DailyA_ButtonCancel"
+        ]
+    },
+    "DailyA_ButtonYes": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    193,
+                    300,
+                    855,
+                    420
+                ],
+                "template": [
+                    "Button/ButtonYesA.png",
+                    "Button/ButtonYesB.png",
+                    "Button/ButtonYesC.png",
+                    "Button/ButtonYesD.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    30,
+                    4,
+                    -30,
+                    -4
+                ]
+            }
+        },
+        "next": [
+            "DailyA_ButtonYes",
+            "DailyA_ButtonCancel",
+            "DailyB_Selection",
+            "DailyB_Swipe",
+            "DailyB_Simulation",
+            "DailyB"
+        ],
+        "interrupt": [
+            "Reward"
+        ]
+    },
+
+    "DailyA_ButtonCancel":{
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    62,
+                    30,
+                    288,
+                    217
+                ],
+                "template": [
+                    "Room/RoomButtonCancelA.png",
+                    "Room/RoomButtonCancelB.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "DailyA_ButtonCancel",
+            "DailyB_Selection",
+            "DailyB_Swipe",
+            "DailyB_Simulation",
+            "DailyB"
+        ]
+    },
+    "DailyA_None": {
+        "recognition": {
+        "type": "OCR",
+            "param": {
+                "roi" : [
+                    232,
+                    71,
+                    915,
+                    585
+                ],
+                "expected": [
+                    "道具不足，不可扫荡"
+                ]
+            }
+        },
+        "next": [
+            "DailyA_ButtonCancel",
+            "DailyB_Selection",
+            "DailyB_Swipe",
+            "DailyB_Simulation",
+            "DailyB"
+        ]
+    }
+}

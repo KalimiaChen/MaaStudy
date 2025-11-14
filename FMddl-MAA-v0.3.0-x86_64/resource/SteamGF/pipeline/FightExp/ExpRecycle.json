@@ -1,0 +1,274 @@
+{
+    "ExpRecycle": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    195,
+                    144,
+                    889,
+                    454
+                ],
+                "expected": [
+                    "人形回收",
+                    "装备回收"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target" : [
+                    599,
+                    351,
+                    85,
+                    171
+                ]
+            }
+        },
+        "next": [
+            "ExpRecycle",
+            "ExpRecycle_Character"
+        ]
+    },
+    "ExpRecycle_Character": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    191,
+                    93,
+                    317,
+                    238
+                ],
+                "expected": [
+                    "角色"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ExpRecycle_AutoChooseCharacter"
+        ]
+    },
+    "ExpRecycle_AutoChooseCharacter": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    900,
+                    500,
+                    600,
+                    220
+                ],
+                "expected": [
+                    "智能",
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ExpRecycle_AutoChooseCharacter",
+            "ExpRecycle_YesCharacter",
+            "ExpRecycle_RemainCharacter"
+        ]
+    },
+    "ExpRecycle_YesCharacter": {
+        "post_delay": 2000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    900,
+                    500,
+                    600,
+                    220
+                ],
+                "expected": [
+                    "回收",
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ExpRecycle_Equipment",
+            "ExpRecycle_ESC"
+        ]
+    },
+    "ExpRecycle_RemainCharacter": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    900,
+                    500,
+                    600,
+                    220
+                ],
+                "expected": [
+                    "智能"
+                ]
+            }
+        },
+        "action": {
+            "type": "Key",
+            "param": {
+                "key": 27
+            }
+        },
+        "next": [
+            "ExpRecycle_AutoChooseCharacter",
+            "ExpRecycle_YesCharacter",
+            "ExpRecycle_RemainCharacter"
+        ]
+    },
+    "ExpRecycle_Equipment": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    191,
+                    93,
+                    600,
+                    238
+                ],
+                "expected": [
+                    "装备"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ExpRecycle_AutoChooseEquipment"
+        ]
+    },
+    "ExpRecycle_AutoChooseEquipment": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    900,
+                    500,
+                    600,
+                    220
+                ],
+                "expected": [
+                    "智能"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ExpRecycle_AutoChooseEquipment",
+            "ExpRecycle_YesEquipment"
+        ]
+    },
+    "ExpRecycle_YesEquipment": {
+        "post_delay": 2000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    900,
+                    500,
+                    600,
+                    220
+                ],
+                "expected": [
+                    "回收",
+                    "确定"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "ExpRecycle_EmptyClick",
+            "ExpRecycle_YesEquipment",
+            "ExpRecycle_ESC"
+        ]
+    },
+    "ExpRecycle_RemainEquipment": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    900,
+                    500,
+                    600,
+                    220
+                ],
+                "expected": [
+                    "智能"
+                ]
+            }
+        },
+        "action": {
+            "type": "Key",
+            "param": {
+                "key": 27
+            }
+        },
+        "next": [
+            "ExpRecycle_YesEquipment",
+            "ExpRecycle_RemainEquipment"
+        ]
+    },
+    "ExpRecycle_EmptyClick": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    191,
+                    93,
+                    317,
+                    238
+                ],
+                "expected": [
+                    "角色"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target" : [
+                    1068,
+                    30,
+                    135,
+                    32
+                ]
+            }
+        },
+        "next": [
+            "EventRecycle_ESC"
+        ]
+    },
+    "ExpRecycle_ESC": {
+        "pre_delay": 2000,
+        "post_delay": 2000,
+        "action": {
+            "type": "Key",
+            "param": {
+                "key": 27
+            }
+        },
+        "next": [
+            "ExpFight",
+            "ExpRecycle_ESC"
+        ]
+    }
+}

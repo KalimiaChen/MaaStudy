@@ -1,0 +1,84 @@
+{
+    "enterLoungeAction": {
+        "next": [
+            "进入整备室"
+        ]
+    },
+    "进入整备室": {
+        "recognition": "OCR",
+        "expected": "整备室",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "loungeButtonClick"
+        ]
+    },
+    "loungeButtonClick": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "其他/休息室.png"
+        ],
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "loungeConfirm"
+        ]
+    },
+    "loungeConfirm": {
+        "recognition": "OCR",
+        "expected": "姿态",
+        "next": [
+            "loungeBackPage",
+            "loungeBackPageNotFound"
+        ]
+    },
+    "loungeBackPage": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            0,
+            0,
+            200,
+            70
+        ],
+        "template": [
+            "公用按钮组件/返回上一页_gray_v2.png",
+            "公用按钮组件/返回上一页_black_v2.png"
+        ],
+        "green_mask": true,
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "退出整备室"
+        ]
+
+    }, 
+    "loungeBackPageNotFound": {
+        "post_wait_freezes": 500,
+        "next": [
+            "clickButtonWithFixedPositionToLeaveDormitory"
+        ]
+    },
+    "clickButtonWithFixedPositionToLeaveDormitory": {
+        "recognition": "DirectHit",
+        "action": "Click",
+        "target": [26,23,43,42],
+        "post_wait_freezes": 500,
+        "next": [
+            "退出整备室"
+        ]
+    },
+    "退出整备室": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "公用按钮组件/返回上一页_gray.png",
+            "公用按钮组件/返回上一页_black.png"
+        ],
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "enterDispatchCenterAction",
+            "enterSchedulingGainsAction",
+            "returnToHomePage"
+        ]
+    }
+}

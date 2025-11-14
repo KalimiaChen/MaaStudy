@@ -1,0 +1,906 @@
+{
+    "8.1nFairy_SwipetoAirport": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    0,
+                    420,
+                    300,
+                    300
+                ],
+                "expected": [
+                    "计划模式"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin" : [1150,378,1,1],
+                "end" : [1150,379,1,1]
+            }
+        },
+        "next": [
+            "8.1nFairy_Prepare",
+            "8.1nFairy_SwipetoAirport"
+        ]
+    },
+    "8.1nFairy_Prepare": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    263,
+                    74,
+                    963,
+                    594
+                ],
+                "template": [
+                    "Fight/AirportOpenA.png",
+                    "Fight/AirportOpenB.png",
+                    "Fight/AirportOpenA_720p.png",
+                    "Fight/AirportOpenB_720p.png"
+                ],
+                "threshold": 0.5
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "8.1nFairy_ChooseTeam",
+            "8.1nFairy_SwipeTeamUp",
+            "8.1nFairy_Prepare"
+        ],
+        "timeout": 60000
+    },
+    "8.1nFairy_SwipeTeamUp": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    0,
+                    0,
+                    497,
+                    379
+                ],
+                "expected": [
+                    "选择梯",
+                    "择梯队"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin" : [
+                    80,
+                    649,
+                    1,
+                    1
+                ],
+                "end" : [
+                    80,
+                    181,
+                    1,
+                    1
+                ]
+            }
+        },
+        "next": [
+            "8.1nFairy_ChooseTeam",
+            "8.1nFairy_SwipeTeamDown"
+        ]
+    },
+    "8.1nFairy_SwipeTeamDown": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    0,
+                    0,
+                    497,
+                    379
+                ],
+                "expected": [
+                    "选择梯",
+                    "择梯队"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin" : [
+                    80,
+                    181,
+                    1,
+                    1
+                ],
+                "end" : [
+                    80,
+                    649,
+                    1,
+                    1
+                ]
+            }
+        },
+        "next": [
+            "8.1nFairy_ChooseTeam",
+            "8.1nFairy_SwipeTeamUp"
+        ]
+    },
+    "8.1nFairy_ChooseTeam": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    0,
+                    0,
+                    200,
+                    720
+                ],
+                "template": [
+                    "Fight/TeamCaution4A.png",
+                    "Fight/TeamCaution4B.png",
+                    "Fight/TeamEchelon4A.png",
+                    "Fight/TeamEchelon4B.png",
+                    "Fight/TeamCaution4A_720p.png",
+                    "Fight/TeamCaution4B_720p.png",
+                    "Fight/TeamEchelon4A_720p.png",
+                    "Fight/TeamEchelon4B_720p.png"
+                ],
+                "threshold": 0.85
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "8.1nFairy_FixTeam",
+            "8.1nFairy_YesTeam",
+            "8.1nFairy_ChooseTeam"
+        ]
+    },
+    "8.1nFairy_FixTeam": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    500,
+                    560,
+                    1000,
+                    250
+                ],
+                "expected": [
+                    "一键",
+                    "修复"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "8.1nFairy_YesTeam",
+            "8.1nFairy_FixTeam"
+        ]
+    },
+    "8.1nFairy_YesTeam": {
+        "pre_wait_freezes": 200,
+        "post_wait_freezes": 200,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    600,
+                    300,
+                    680,
+                    420
+                ],
+                "expected": [
+                    "确定",
+                    "确认"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    30,
+                    4,
+                    -30,
+                    -4
+                ]
+            }
+        },
+        "next": [
+            "8.1nFairy_YesTeam",
+            "8.1nFairy_StartFight"
+        ]
+    },
+    "8.1nFairy_StartFight": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    600,
+                    300,
+                    680,
+                    420
+                ],
+                "expected": [
+                    "点击指挥部",
+                    "进行部署"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    30,
+                    4,
+                    -30,
+                    -4
+                ]
+            }
+        },
+        "next": [
+            "8.1nFairy_StartFight",
+            "8.1nFairy_ClickTeam"
+        ]
+    },
+    "8.1nFairy_ClickTeam": {
+        "pre_wait_freezes": 300,
+        "post_delay": 2000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "expected": [
+                    "第"
+                ],
+                "threshold": 0.6
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    -130,
+                    40,
+                    -30,
+                    -4
+                ]
+            }
+        },
+        "next": [
+            "8.1nFairy_CheckFairyPoint",
+            "8.1nFairy_ButtonFairy",
+            "8.1nFairy_SwipetoMark",
+            "8.1nFairy_ClickTeam"
+        ]
+    },
+    "8.1nFairy_CheckFairyPoint": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    1097,
+                    108,
+                    182,
+                    168
+                ],
+                "expected": [
+                    "妖精",
+                    "指令"
+                ],
+                "threshold": 0.6
+            }
+        },
+        "next": [
+            "8.1nFairy_FairyPointNotEnough",
+            "8.1nFairy_ButtonFairy",
+            "8.1nFairy_ScheduleMode"
+        ]
+    },
+    "8.1nFairy_ButtonFairy": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    1000,
+                    130,
+                    900,
+                    177
+                ],
+                "expected": [
+                    "关"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "8.1nFairy_ButtonFairy",
+            "8.1nFairy_ScheduleMode"
+        ]
+    },
+    "8.1nFairy_ScheduleMode": {
+        "pre_wait_freezes": 300,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    0,
+                    420,
+                    300,
+                    300
+                ],
+                "expected": [
+                    "计划模式"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    30,
+                    4,
+                    -30,
+                    -4
+                ]
+            }
+        },
+        "next": [
+            "8.1nFairy_SwipetoMark"
+        ]
+    },
+
+    "8.1nFairy_SwipetoMark": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    0,
+                    420,
+                    300,
+                    300
+                ],
+                "template": [
+                    "Fight/ScheduleOn.png",
+                    "Fight/ScheduleOn_720p.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "duration": 100,
+"begin" : [641,62,1,1],
+"end" : [641,625,1,1]
+            }
+        },
+        "next": [
+            "8.1nFairy_PressEnemyAccident",
+            "8.1nFairy_ClickTarget1",
+            "8.1nFairy_SwipetoMark"
+        ]
+    },
+    "8.1nFairy_PressEnemyAccident": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    791,
+                    0,
+                    424,
+                    392
+                ],
+                "expected": [
+                    "敌方梯队",
+                    "阵型",
+                    "驻守",
+                    "警戒",
+                    "消灭"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target" : [
+                    309,
+                    52,
+                    200,
+                    200
+                ]
+            }
+        },
+        "next": [
+            "8.1nFairy_PressEnemyAccident",
+            "8.1nFairy_ClickTeam",
+            "8.1nFairy_SwipetoTeam"
+        ]
+    },
+    "8.1nFairy_SwipetoTeam": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    0,
+                    420,
+                    300,
+                    300
+                ],
+                "expected": [
+                    "计划模式"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "duration": 100,
+"begin" : [641,545,1,1],
+"end" : [641,342,1,1]
+            }
+        },
+        "next": [
+            "8.1nFairy_PressEnemyAccident",
+            "8.1nFairy_ClickTeam",
+            "8.1nFairy_SwipetoTeam"
+        ]
+    },
+    "8.1nFairy_ClickTarget1": {
+        "pre_wait_freezes": 300,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    0,
+                    60,
+                    1900,
+                    660
+                ],
+                "template": [
+"Fight/AirportOpenA.png",
+"Fight/AirportOpenB.png",
+"Fight/AirportOpenA_720p.png",
+"Fight/AirportOpenB_720p.png"
+                ],
+                "threshold": 0.7
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+-172,
+317,
+0,
+1
+                ]
+            }
+        },
+        "next": [
+            "8.1nFairy_ClickTarget2"
+        ]
+    },
+    "8.1nFairy_ClickTarget2": {
+        "pre_wait_freezes": 300,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    0,
+                    60,
+                    1900,
+                    660
+                ],
+                "template": [
+"Fight/AirportOpenA.png",
+"Fight/AirportOpenB.png",
+"Fight/AirportOpenA_720p.png",
+"Fight/AirportOpenB_720p.png"
+                ],
+                "threshold": 0.7
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+157,
+248,
+0,
+1
+                ]
+            }
+        },
+        "next": [
+            "8.1nFairy_ScheduleYes",
+            "8.1nFairy_LackButYes",
+            "8.1nFairy_Fighting"
+        ]
+    },
+    "8.1nFairy_ScheduleYes": {
+        "post_wait_freezes": 300,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    1000,
+                    550,
+                    280,
+                    170
+                ],
+                "expected": [
+                    "执行计",
+                    "行计划"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "8.1nFairy_LackButYes",
+            "8.1nFairy_AgainstLagging",
+            "8.1nFairy_Fighting"
+        ]
+    },
+    "8.1nFairy_LackButYes": {
+        "pre_wait_freezes": 200,
+        "post_wait_freezes": 200,
+        "rate_limit": 200,
+        "post_delay": 2000,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    193,
+                    300,
+                    855,
+                    420
+                ],
+                "template": [
+                    "Button/ButtonYesEmergency.png",
+                    "Button/ButtonYesEmergency_720p.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "LongPress",
+            "param": {
+                "target_offset": [
+                    30,
+                    4,
+                    -30,
+                    -4
+                ],
+                "duration": 60
+            }
+        },
+        "next": [
+            "8.1nFairy_LackButYes",
+            "8.1nFairy_DoNotStopSchedule",
+            "8.1nFairy_AgainstLagging",
+            "8.1nFairy_Fighting",
+            "8.1nFairy_RoundEnd"
+        ]
+    },
+    "8.1nFairy_Fighting": {
+        "pre_wait_freezes": 100,
+        "post_wait_freezes": 100,
+        "rate_limit": 300,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    0,
+                    0,
+                    1100,
+                    720
+                ],
+                "expected": [
+                    "全局经验",
+                    "战斗胜",
+                    "GeK",
+                    "★",
+                    "获得",
+                    "战利品",
+                    "结算",
+                    "再次",
+                    "枪种",
+                    "速",
+                    "暴击",
+                    "穿甲",
+                    "回避",
+                    "伤害",
+                    "命中",
+                    "夜视",
+                    "弹"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target" : [
+                    336,
+                    606,
+                    32,
+                    37
+                ]
+            }
+        },
+        "next": [
+            "8.1nFairy_LackButYes",
+            "8.1nFairy_DoNotStopSchedule",
+            "8.1nFairy_AgainstLagging",
+            "ExpRecycle",
+            "8.1nFairy_StartFight",
+            "8.1nFairy_RoundEnd",
+            "8.1nFairy_Fighting"
+        ]
+    },
+    "8.1nFairy_AgainstLagging": {
+        "doc": "防止点到人形导致冻结时间",
+        "pre_wait_freezes": 200,
+        "post_wait_freezes": 200,
+        "rate_limit": 200,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    909,
+                    31,
+                    133,
+                    81
+                ],
+                "expected": [
+                    "时间"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target" : [
+                    759,
+                    63,
+                    131,
+                    54
+                ]
+            }
+        },
+        "next": [
+            "8.1nFairy_LackButYes",
+            "8.1nFairy_DoNotStopSchedule",
+            "8.1nFairy_AgainstLagging",
+            "8.1nFairy_Fighting",
+            "ExpRecycle",
+            "8.1nFairy_StartFight",
+            "8.1nFairy_RoundEnd"
+        ]
+    },
+    "8.1nFairy_DoNotStopSchedule": {
+        "pre_wait_freezes": 200,
+        "post_wait_freezes": 200,
+        "rate_limit": 200,
+        "post_delay": 2000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    193,
+                    300,
+                    855,
+                    420
+                ],
+                "expected": [
+                    "取消"
+                ]
+            }
+        },
+        "action": {
+            "type": "LongPress",
+            "param": {
+                "target_offset": [
+                    30,
+                    4,
+                    -30,
+                    -4
+                ],
+                "duration": 60
+            }
+        },
+        "next": [
+            "8.1nFairy_LackButYes",
+            "8.1nFairy_DoNotStopSchedule",
+            "8.1nFairy_AgainstLagging",
+            "8.1nFairy_Fighting",
+            "8.1nFairy_RoundEnd"
+        ]
+    },
+    "8.1nFairy_RoundEnd": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    830,
+                    492,
+                    1000,
+                    227
+                ],
+                "expected": [
+                    "00",
+                    "结束回合"
+                ]
+            }
+        },
+        "next": [
+            "8.1nFairy_LackButYes",
+            "8.1nFairy_DoNotStopSchedule",
+            "8.1nFairy_FightRedo",
+            "8.1nFairy_OnceOver"
+        ]
+    },
+    "8.1nFairy_OnceOver": {
+        "pre_wait_freezes": 200,
+        "post_wait_freezes": 200,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    0,
+                    0,
+                    600,
+                    200
+                ],
+                "expected": [
+                    "终止作",
+                    "止作战"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    0,
+                    -10,
+                    0,
+                    0
+                ]
+            }
+        },
+        "next": [
+            "8.1nFairy_FightRedo",
+            "8.1nFairy_OnceOver"
+        ]
+    },
+    "8.1nFairy_FightRedo": {
+        "pre_wait_freezes": 200,
+        "post_wait_freezes": 200,
+        "post_delay": 5000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    165,
+                    463,
+                    862,
+                    256
+                ],
+                "expected": [
+                    "重新作",
+                    "新作战"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "8.1nFairy_FightRedo",
+            "8.1nFairy_StartFight"
+        ]
+    },
+    "8.1nFairy_FairyPointNotEnough": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    1097,
+                    108,
+                    182,
+                    168
+                ],
+                "expected": [
+                    "003",
+                    "002",
+                    "001",
+                    "000"
+                ]
+            }
+        },
+        "next": [
+            "8.1nFairy_FightStop",
+            "8.1nFairy_FightShutup"
+        ]
+    },
+    "8.1nFairy_FightShutup": {
+        "pre_wait_freezes": 200,
+        "post_wait_freezes": 200,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    0,
+                    0,
+                    600,
+                    200
+                ],
+                "expected": [
+                    "终止作",
+                    "止作战"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    0,
+                    -10,
+                    0,
+                    0
+                ]
+            }
+        },
+        "next": [
+            "8.1nFairy_FightStop",
+            "8.1nFairy_FightShutup"
+        ]
+    },
+    "8.1nFairy_FightStop": {
+        "pre_wait_freezes": 200,
+        "post_wait_freezes": 200,
+        "post_delay": 2000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    165,
+                    463,
+                    862,
+                    256
+                ],
+                "expected": [
+                    "终止作",
+                    "止作战"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "8.1nFairy_FightStop",
+            "8.1nFairy_FightShutup",
+            "EnterHome"
+        ]
+    }
+}

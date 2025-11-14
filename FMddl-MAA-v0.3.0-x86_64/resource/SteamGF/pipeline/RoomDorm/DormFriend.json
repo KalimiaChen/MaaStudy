@@ -1,0 +1,464 @@
+{
+    "DormFriend": {
+        "pre_delay": 200,
+        "pre_wait_freezes": 100,
+        "post_wait_freezes": 100,
+        "doc": "返回主界面（专供好友宿舍前使用）",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    30,
+                    10,
+                    461,
+                    158
+                ],
+                "template": [
+                    "Button/ButtonHomeAtoB1.png",
+                    "Button/ButtonHomeAtoB2.png"
+                ],
+                "threshold":0.8
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "DormFriend_BackToHome",
+            "DormFriend",
+            "DormFriend_HomeAlready"
+        ],
+        "interrupt":[
+            "RoomStuck"
+        ]
+    },
+    "DormFriend_BackToHome":{
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    5,
+                    61,
+                    427,
+                    153
+                ],
+                "expected": [
+                    "返回基地",
+                    "RETURN"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "Assignment_Again",
+            "Reward",
+            "GetGirl",
+            "DormFriend",
+            "DormFriend_BackToHome",
+            "DormFriend_HomeAlready"
+        ],
+        "interrupt":[
+            "RoomStuck"
+        ]
+    },
+    "DormFriend_HomeAlready": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    1000,
+                    318,
+                    900,
+                    167
+                ],
+                "template": [
+                    "Button/ButtonTeamA.png",
+                    "Button/ButtonTeamB.png",
+                    "Button/ButtonTeamC.png",
+                    "Button/ButtonTeamD.png"
+                ],
+                "threshold": 0.8
+            }
+        },
+        "next": [
+            "DormFriend_ButtonFriend",
+            "DormFriend_MenuBtoA"
+        ]
+    },
+    "DormFriend_MenuBtoA": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    325,
+                    576,
+                    1600,
+                    143
+                ],
+                "expected": [
+                    "设置"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target" : [
+                    1102,
+                    633,
+                    23,
+                    18
+                ]
+            }
+        },
+        "next": [
+            "DormFriend_ButtonFriend",
+            "DormFriend_MenuBtoA"
+        ],
+        "interrupt": [
+            "Assignment_Again",
+            "Reward",
+            "GetGirl"
+        ]
+    },
+    "DormFriend_ButtonFriend": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    325,
+                    576,
+                    1600,
+                    143
+                ],
+                "expected": [
+                    "好友"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "DormFriend_ButtonFriend",
+            "DormFriend_Friendlist"
+        ]
+    },
+    "DormFriend_Friendlist": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    0,
+                    0,
+                    335,
+                    603
+                ],
+                "expected": [
+                    "好友列表"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "DormFriend_FriendOrderBy",
+            "DormFriend_ChooseFriendOrder"
+        ]
+    },
+    "DormFriend_FriendOrderBy": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    868,
+                    0,
+                    411,
+                    214
+                ],
+                "expected": [
+                    "最新消息", 
+                    "最近登陆",
+                    "指挥官等级",
+                    "宿舍数量"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "DormFriend_ChooseFriendOrder",
+            "DormFriend_FriendOrderBy"
+        ]
+    },
+    "DormFriend_ChooseFriendOrder": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    1023,
+                    0,
+                    256,
+                    590
+                ],
+                "expected": [
+                    "宿舍数量"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "DormFriend_FriendBusinessCard",
+            "DormFriend_VisitFriend"
+        ]
+    },
+    "DormFriend_FriendBusinessCard": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    202,
+                    0,
+                    873,
+                    400
+                ],
+                "expected": [
+                    "等级",
+                    "最后上线"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "DormFriend_VisitFriend",
+            "DormFriend_FriendBusinessCard"
+        ]
+    },
+    "DormFriend_VisitFriend": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    737,
+                    330,
+                    542,
+                    389
+                ],
+                "expected": [
+                    "参观"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "DormFriend_VisitFriend",
+            "DormFriend_Like",
+            "DormFriend_Battery",
+            "DormFriend_BatteryButtonNo",
+            "DormFriend_Next"
+        ]
+    },
+    "DormFriend_Like": {
+        "pre_delay": 2000,
+        "pre_wait_freezes": 100,
+        "post_wait_freezes": 100,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    900,
+                    559,
+                    1000,
+                    151
+                ],
+                "expected": [
+                    "点赞",
+                    "Like"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "DormFriend_Like",
+            "DormFriend_Battery",
+            "DormFriend_Next"
+        ]
+    },
+    "DormFriend_Battery": {
+        "pre_wait_freezes": 100,
+        "post_wait_freezes": 100,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    70,
+                    201,
+                    505,
+                    334
+                ],
+                "template": [
+                    "Dorm/DormBatteryFriend.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "DormFriend_BatteryButtonNo",
+            "DormFriend_Like",
+            "DormFriend_Battery",
+            "DormFriend_Next"
+        ]
+    },
+    "DormFriend_BatteryButtonNo": {
+        "pre_delay": 2000,
+        "pre_wait_freezes": 100,
+        "post_wait_freezes": 100,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    0,
+                    200,
+                    1900,
+                    520
+                ],
+                "expected": [
+                    "关闭"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "DormFriend_Like",
+            "DormFriend_Battery",
+            "DormFriend_Next"
+        ]
+    },
+    "DormFriend_Next": {
+        "pre_delay": 1000,
+        "pre_wait_freezes": 100,
+        "post_wait_freezes": 100,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    137,
+                    557,
+                    150,
+                    150
+                ],
+                "template": [
+                    "Dorm/DormFriendNextA.png",
+                    "Dorm/DormFriendNextB.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "DormFriend_ClickCenter",
+            "DormFriend_Battery",
+            "DormFriend_Stop",
+            "DormFriend_Like",
+            "DormFriend_Next"
+        ]
+    },
+    "DormFriend_ClickCenter": {
+        "doc": "点击中心",
+        "action": {
+        "type": "Click",
+            "param": {
+                "target": [
+                    620,
+                    340,
+                    20,
+                    20
+                ]
+            }
+        },
+        "next": [
+            "DormFriend_Battery",
+            "DormFriend_Stop",
+            "DormFriend_Like",
+            "DormFriend_Next"
+        ]
+    },
+    "DormFriend_Stop": {
+        "pre_wait_freezes":1000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    900,
+                    559,
+                    380,
+                    151
+                ],
+                "expected": [
+                    "10/10",
+                    "留言",
+                    "MESSAGE"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    34,
+                    56,
+                    72,
+                    34
+                ]
+            }
+        },
+        "next": [
+            "DormFriend_ButtonCancel",
+            "DormFriend_Stop",
+            "EnterHome"
+        ]
+    },
+    "DormFriend_ButtonCancel": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    66,
+                    54,
+                    600,
+                    300
+                ],
+                "template": [
+                    "Room/RoomButtonCancelA.png",
+                    "Room/RoomButtonCancelB.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "DormFriend_ButtonCancel",
+            "DormFriend_Stop",
+            "EnterHome"
+        ]
+    }
+}

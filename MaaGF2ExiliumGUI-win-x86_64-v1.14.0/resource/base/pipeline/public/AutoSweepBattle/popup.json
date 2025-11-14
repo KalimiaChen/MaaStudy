@@ -1,0 +1,215 @@
+{
+    "nonScrollablePopupConfirm": {
+        "is_sub": true,
+        "roi": [
+            260,
+            120,
+            760,
+            480
+        ],
+        "recognition": "OCR",
+        "expected": "确认",
+        "action": "Click"
+    },
+    "scrollablePopupConfirm": {
+        "doc": "滑动条的弹窗用于自律，活动兑换物品的滑动弹窗不应该由脚本完成，因此点击确认后延迟3秒",
+        "is_sub": true,
+        "roi": [
+            260,
+            108,
+            760,
+            502
+        ],
+        "recognition": "OCR",
+        "expected": "确认",
+        "action": "Click",
+        "post_delay": 4000
+    },
+    "nonScrollablePopupCancel": {
+        "is_sub": true,
+        "roi": [
+            260,
+            120,
+            760,
+            480
+        ],
+        "recognition": "OCR",
+        "expected": "取消",
+        "action": "Click"
+    },
+    "scrollablePopupCancel": {
+        "is_sub": true,
+        "roi": [
+            260,
+            108,
+            760,
+            502
+        ],
+        "recognition": "OCR",
+        "expected": "取消",
+        "action": "Click"
+    },
+    "nonScrollablePopupClose": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "roi": [
+            940,
+            120,
+            80,
+            60
+        ],
+        "template": [
+            "公用按钮组件/关闭按钮_gray.png",
+            "公用按钮组件/关闭按钮_black.png"
+        ],
+        "action": "Click"
+    },
+    "scrollablePopupClose": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "roi": [
+            940,
+            110,
+            80,
+            60
+        ],
+        "template": [
+            "公用按钮组件/关闭按钮_gray.png",
+            "公用按钮组件/关闭按钮_black.png"
+        ],
+        "action": "Click"
+    },
+    "sliderColorDetection": {
+        "doc": "滑动条颜色检测，检测到红色，值-1",
+        "roi": [
+            260,
+            108,
+            760,
+            502
+        ],
+        "upper": [
+            255,
+            129,
+            113
+        ],
+        "lower": [
+            200,
+            95,
+            64
+        ],
+        "recognition": "ColorMatch",
+        "post_delay": 100,
+        "next": [
+            "resultRecognition",
+            "decreaseSlider"
+        ]
+    },
+    "increaseSlider": {
+        "doc": "增加自律次数",
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "roi": [
+            260,
+            108,
+            760,
+            502
+        ],
+        "template": [
+            "公用按钮组件/滑动条值增加.png"
+        ],
+        "threshold": 0.9,
+        "post_delay": 100,
+        "action": "Click"
+    },
+    "decreaseSlider": {
+        "doc": "减少自律次数",
+        "recognition": "TemplateMatch",
+        "roi": [
+            260,
+            108,
+            760,
+            502
+        ],
+        "template": [
+            "公用按钮组件/滑动条值减少.png"
+        ],
+        "threshold": 0.9,
+        "action": "Click",
+        "post_delay": 100,
+        "next": [
+            "sliderColorDetection",
+            "scrollablePopupConfirm",
+            "resultRecognition"
+        ]
+    },
+    "resultRecognition": {
+        "recognition": "OCR",
+        "expected": "点击空白处关闭",
+        "post_delay": 1500,
+        "next": [
+            "ClickResultRecognition"
+        ]
+    },
+    "ClickResultRecognition": {
+        "doc": "有指定次数和没指定次数的情况，指定次数的时候，开启退出任务到主页，未指定的时候关闭退出任务到主页",
+        "target": [
+            340,
+            430,
+            600,
+            260
+        ],
+        "action": "Click",
+        "next": [
+            "exitAutoSweepBattleTask",
+            "clickAutoSweepBattleSupplyOperationButton"
+        ]
+    },
+    "exitAutoSweepBattleTask": {
+        "doc": "退出自律作战任务",
+        "enabled": true,
+        "next": [
+            "returnToHomePage"
+        ]
+    },
+    "UserSetSliderValue": {
+        "doc": "用户设定的滑动条值",
+        "enabled": true,
+        "recognition": "OCR",
+        "roi": [
+            613,
+            288,
+            49,
+            36
+        ],
+        "expected": "1",
+        "next": [
+            "scrollablePopupConfirm",
+            "resultRecognition"
+        ]
+    },
+    "increaseSliderMax": {
+        "doc": "检测滑动条是否最大值,配件精研不适用",
+        "roi": [
+            812,
+            378,
+            28,
+            28
+        ],
+        "upper": [
+            130,
+            131,
+            135
+        ],
+        "lower": [
+            129,
+            131,
+            135
+        ],
+        "recognition": "ColorMatch",
+        "post_delay": 100,
+        "next": [
+            "scrollablePopupConfirm",
+            "resultRecognition"
+        ]
+    }
+}

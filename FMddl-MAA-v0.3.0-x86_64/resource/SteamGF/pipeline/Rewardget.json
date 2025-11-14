@@ -1,0 +1,422 @@
+{
+    "Rewardget": {
+        "recognition": {
+        "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    1000,
+                    318,
+                    900,
+                    167
+                ],
+                "template": [
+                    "Button/ButtonTeamA.png",
+                    "Button/ButtonTeamB.png",
+                    "Button/ButtonTeamC.png",
+                    "Button/ButtonTeamD.png"
+                ],
+                "threshold": 0.8
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target" : [
+                    464,
+                    257,
+                    146,
+                    120
+                ]
+            }
+        },
+        "next": [
+            "Rewardget_MenuBtoA",
+            "Rewardget_ButtonMail"
+        ],
+        "interrupt": [
+            "Assignment_Again",
+            "Reward"
+        ]
+    },
+    "Rewardget_MenuAtoB": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    325,
+                    576,
+                    1600,
+                    143
+                ],
+                "expected": [
+                    "邮件"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target" : [
+                    1102,
+                    633,
+                    23,
+                    18
+                ]
+            }
+        },
+        "interrupt": [
+            "Assignment_Again",
+            "Reward"
+        ]
+    },
+    "Rewardget_MenuBtoA": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    325,
+                    576,
+                    1600,
+                    143
+                ],
+                "expected": [
+                    "设置"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target" : [
+                    1102,
+                    633,
+                    23,
+                    18
+                ]
+            }
+        },
+        "next": [
+            "Rewardget_MenuBtoA",
+            "Rewardget_ButtonMail"
+        ],
+        "interrupt": [
+            "Assignment_Again",
+            "Reward",
+            "GetGirl"
+        ]
+    },
+    "Rewardget_ButtonMail": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    325,
+                    576,
+                    1600,
+                    143
+                ],
+                "expected": [
+                    "邮件"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "Rewardget_ButtonMail",
+            "Rewardget_Mail"
+        ]
+    },
+    "Rewardget_Mail": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    0,
+                    552,
+                    424,
+                    167
+                ],
+                "expected": [
+                    "领取全部"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "Rewardget_MailOut",
+            "Rewardget_ButtonTask"
+        ],
+        "interrupt": [
+            "Reward"
+        ]
+    },
+    "Rewardget_MailOut": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    208,
+                    0,
+                    203,
+                    171
+                ],
+                "expected": [
+                    "邮件",
+                    "MAIL"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target" : [
+                    54,
+                    55,
+                    114,
+                    33
+                ]
+            }
+        },
+        "next": [
+            "Rewardget_MailOut",
+            "Rewardget_ButtonTask"
+        ],
+        "interrupt": [
+            "Reward"
+        ]
+    },
+    "Rewardget_ButtonTask": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    325,
+                    576,
+                    1600,
+                    143
+                ],
+                "expected": [
+                    "任务"
+                ]
+            }
+        }, 
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "Rewardget_DailyQuest",
+            "EnterHome"
+        ],
+        "interrupt": [
+            "Assignment_Again",
+            "Reward"
+        ]
+    },
+    "Rewardget_DailyQuest": {
+        "post_delay": 2000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    0,
+                    0,
+                    464,
+                    403
+                ],
+                "expected": [
+                    "每日事务",
+                    "DAILY"
+                ]
+            }
+        }, 
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "Rewardget_TaskFinish",
+            "Rewardget_TaskGift",
+            "Rewardget_TaskVitality",
+            "Rewardget_TaskToPass",
+            "EnterHome"
+        ]
+    },
+    "Rewardget_TaskFinish": {
+        "post_delay": 2000,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    900,
+                    584,
+                    1000,
+                    136
+                ],
+                "expected": [
+                    "结算",
+                    "COLLECT",
+                    "MISSION"
+                ]
+            }
+        }, 
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "Rewardget_TaskReward",
+            "Rewardget_TaskFinish",
+            "Rewardget_DailyQuest"
+        ]
+    },
+    "Rewardget_TaskGift": {
+        "post_delay": 5000,        
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    800,
+                    400,
+                    480,
+                    300
+                ],
+                "template": [
+                    "Rewardget/TaskGiftA.png",
+                    "Rewardget/TaskGiftB.png"
+                ],
+                "threshold": 0.75,
+                "green_mask": true
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "Rewardget_TaskReward",
+            "Rewardget_TaskGift",
+            "Rewardget_DailyQuest"
+        ]
+    },
+    "Rewardget_TaskVitality": {
+        "post_delay": 2000,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    300,
+                    60,
+                    1600,
+                    244
+                ],
+                "template": [
+                    "Rewardget/TaskVitalityA.png",
+                    "Rewardget/TaskVitalityB.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "Rewardget_TaskReward",
+            "Rewardget_TaskVitality",
+            "Rewardget_DailyQuest"
+        ]
+    },
+    "Rewardget_TaskReward": {
+        "pre_delay": 1000,
+        "post_delay": 1000,
+        "rate_limit": 200,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    0,
+                    100,
+                    1900,
+                    350
+                ],
+                "expected": [
+                    "领取奖励",
+                    "REW",
+                    "REV",
+                    "ARD",
+                    "ARB",
+                    "V公",
+                    "公B"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    231,
+                    102,
+                    218,
+                    109
+                ]
+            }
+        },
+        "next": [
+            "Rewardget_DailyQuest",
+            "Rewardget_TaskReward"
+        ]
+    },
+    "Rewardget_TaskToPass": {
+        "post_delay": 2000,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    747,
+                    152,
+                    477,
+                    163
+                ],
+                "template": [
+                    "Rewardget/TaskToPassA.png",
+                    "Rewardget/TaskToPassB.png"
+                ],
+                "green_mask": true,
+                "threshold": 0.55
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "Rewardget_Pass",
+            "EnterHome"
+        ]
+    },
+    "Rewardget_Pass": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    711,
+                    529,
+                    485,
+                    170
+                ],
+                "expected": [
+                    "键领取"
+                ]
+            }
+        }, 
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "EnterHome"
+        ],
+        "interrupt": [
+            "Assignment_Again",
+            "Reward"
+        ]
+    }
+}

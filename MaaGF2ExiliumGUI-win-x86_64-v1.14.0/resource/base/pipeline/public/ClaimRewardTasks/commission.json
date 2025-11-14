@@ -1,0 +1,173 @@
+{
+    "enterCommissionToClaimTask": {
+        "doc": "进入委托领取任务",
+        "enabled": true,
+        "recognition": "OCR",
+        "expected": "^委托", // 有时候会识别成"委托、"
+        "roi": [
+            370,
+            582,
+            909,
+            137
+        ],
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "confirmEntrustedClaimPage"
+        ]
+    },
+    "confirmEntrustedClaimPage": {
+        "doc": "确认进入委托领取页面",
+        "recognition": "OCR",
+        "expected": [
+            "日活跃",
+            "每日订单"
+        ],
+        "post_wait_freezes": 500,
+        "next": [
+            "oneKeyClaimCommissionReward",
+            "claimDailyActiveCommissionReward",
+            "enterJourneyWitnessTab"
+        ]
+    },
+    "oneKeyClaimCommissionReward": {
+        "doc": "一键领取委托奖励",
+        "recognition": "OCR",
+        "expected": "键领取",
+        "action": "Click",
+        "post_wait_freezes": 1500,
+        "next": [
+            "oneKeyClaimCommissionReward",
+            "claimDailyActiveCommissionReward",
+            "enterJourneyWitnessTab"
+        ]
+    },
+    "claimDailyActiveCommissionReward": {
+        "doc": "领取委托日活跃报酬",
+        "recognition": "OCR",
+        "expected": "领取全部",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "closeCommissionRewardResultPage",
+            "oneKeyClaimCommissionReward"
+        ]
+    },
+    "closeCommissionRewardResultPage": {
+        "doc": "关闭领取委托奖励结果页",
+        "recognition": "OCR",
+        "expected": "点击空白处关闭",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "closeCommissionRewardResultPage",
+            "enterJourneyWitnessTab"
+        ]
+    },
+    "enterJourneyWitnessTab": {
+        "doc": "进入危途见证",
+        "recognition": "OCR",
+        "roi": [
+            516,
+            16,
+            748,
+            62
+        ],
+        "expected": "危途见证",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "claimJourneyWitnessReward",
+            "enterJourneyMileStoneTab"
+        ]
+    },
+    "claimJourneyWitnessReward": {
+        "doc": "领取危途见证奖励",
+        "recognition": "OCR",
+        "expected": "键领取",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "closeClaimJourneyWitnessRewardResultPage"
+        ]
+    },
+    "closeClaimJourneyWitnessRewardResultPage": {
+        "doc": "关闭领取危途见证奖励结果页",
+        "recognition": "OCR",
+        "expected": "点击空白处关闭",
+        "action": "Click",
+        "next": [
+            "closeClaimJourneyWitnessRewardResultPage",
+            "enterJourneyMileStoneTab"
+        ]
+    },
+    "enterJourneyMileStoneTab": {
+        "doc": "进入征程丰碑",
+        "recognition": "OCR",
+        "roi": [
+            516,
+            16,
+            748,
+            62
+        ],
+        "expected": "征程丰碑",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "claimJourneyMileStoneReward",
+            "exitCommissionPage"
+        ]
+    },
+    "claimJourneyMileStoneReward": {
+        "doc": "领取征程丰碑奖励",
+        "recognition": "OCR",
+        "expected": "键领取",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "closeClaimJourneyMileStoneRewardResultPage"
+        ]
+    },
+    "closeClaimJourneyMileStoneRewardResultPage": {
+        "doc": "关闭领取征程丰碑奖励结果页",
+        "recognition": "OCR",
+        "expected": "点击空白处关闭",
+        "action": "Click",
+        "next": [
+            "closeClaimJourneyMileStoneRewardResultPage",
+            "exitCommissionPage"
+        ]
+    },
+    "exitCommissionPage": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "公用按钮组件/主页按钮_gray.png",
+            "公用按钮组件/主页按钮_black.png"
+        ],
+        "action": "Click",
+        "next": [
+            "commissionPageExited",
+            "exitCommissionPage"
+        ]
+    },
+    "commissionPageExited": {
+        "doc": "已退出到主界面",
+        "recognition": "OCR",
+        "expected": [
+            "战役推进"
+        ],
+        "next": [
+            "enterPassToClaimTask",
+            "enterPersonalInformationPage",
+            "enterDangerousExcavation",
+            "enterTrial",
+            "开始动态招募祝福任务",
+            "开始暗香赠礼任务",
+            "开始艾莫号许愿池任务",
+            "开始模拟习练任务",
+            "开始格琳喵的委托任务",
+            "开始七天签到限定十连任务",
+            "HomePage"
+        ]
+    }
+}

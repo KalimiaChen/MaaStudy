@@ -1,0 +1,364 @@
+{
+    "AutoSweepBattle": {
+        "doc": "标准同调、定向精研、补给作战",
+        "next": [
+            "enterAutoSweepBattleTask"
+        ],
+        "interrupt": [
+            "StartGame"
+        ]
+    },
+    "enterAutoSweepBattleTask": {
+        "doc": "正式进入标准同调、定向精研、补给作战任务",
+        "recognition": "OCR",
+        "expected": "战役推进",
+        "action": "Click",
+        "next": [
+            "supplyOperation"
+        ]
+    },
+    "supplyOperation": {
+        "recognition": "OCR",
+        "expected": "补给作战",
+        "action": "Click",
+        "post_delay": 1500,
+        "next": [
+            "supplyOperationPageRightSwip"
+        ]
+    },
+    "supplyOperationPageRightSwip": {
+        "doc": "从左往右滑动",
+        "recognition": "DirectHit",
+        "action": "Swipe",
+        "begin": [
+            60,
+            300,
+            100,
+            100
+        ],
+        "end": [
+            1094,
+            300,
+            100,
+            100
+        ],
+        "post_delay": 1500,
+        "next": [
+            "supplyOperationType",
+            "supplyOperationPageLeftSwip"
+        ]
+    },
+    "supplyOperationPageLeftSwip": {
+        "doc": "从右往左滑动",
+        "is_sub": true,
+        "recognition": "DirectHit",
+        "action": "Swipe",
+        "begin": [
+            1094,
+            300,
+            100,
+            100
+        ],
+        "end": [
+            60,
+            300,
+            100,
+            100
+        ],
+        "post_delay": 1500
+    },
+    "supplyOperationType": {
+        "doc": "可通过命令行选项改变类型",
+        "recognition": "OCR",
+        "expected": "定向精研",
+        "action": "Click",
+        "post_delay": 1000,
+        "next": [
+            "supplyOperationReady",
+            "supplyOperationType"
+        ]
+    },
+    "supplyOperationReady": {
+        "doc": "确认是否进入对应页面",
+        "recognition": "OCR",
+        "roi": [
+            969,
+            584,
+            48,
+            28
+        ],
+        "expected": "消耗",
+        "next": [
+            "supplyOperationTypeIsAccessories",
+            "supplyOperationLevelPageTopSwip"
+        ]
+    },
+    "supplyOperationLevelPageTopSwip": {
+        "doc": "从下向上滑动",
+        "recognition": "DirectHit",
+        "action": "Swipe",
+        "begin": [
+            400,
+            600,
+            100,
+            100
+        ],
+        "end": [
+            10,
+            300,
+            100,
+            100
+        ],
+        "post_delay": 1500,
+        "next": [
+            "selectHighestSupplyOperationLevel",
+            "supplyOperationLevelPageDownSwip"
+        ]
+    },
+    "supplyOperationLevelPageDownSwip": {
+        "is_sub": true,
+        "recognition": "DirectHit",
+        "duration": 500,
+        "action": "Swipe",
+        "begin": [
+            400,
+            300,
+            40,
+            12
+        ],
+        "end": [
+            400,
+            490,
+            40,
+            12
+        ],
+        "post_delay": 1000
+    },
+    "selectHighestSupplyOperationLevel": {
+        "recognition": "OCR",
+        "roi": [
+            43,
+            216,
+            101,
+            470
+        ],
+        "order_by": "Vertical",
+        "expected": "^[0-1][0-9]$",
+        "index": -1,
+        "action": "Click",
+        "next": [
+            "supplyOperationAutoSweepButtonDisabled",
+            "clickAutoSweepBattleSupplyOperationButton"
+        ]
+    },
+    "supplyOperationAutoSweepButtonDisabled": {
+        "doc": "检测自律按钮是否不可用",
+        "roi": [
+            840,
+            625,
+            127,
+            55
+        ],
+        "upper": [
+            144,
+            144,
+            148
+        ],
+        "lower": [
+            140,
+            140,
+            140
+        ],
+        "count": 100,
+        "connected": true,
+        "recognition": "ColorMatch",
+        "next": [
+            "supplyOperationLevelLastTwo",
+            "supplyOperationLevelPageDownSwip"
+        ]
+    },
+    "supplyOperationLevelLastTwo": {
+        "recognition": "OCR",
+        "roi": [
+            43,
+            216,
+            101,
+            470
+        ],
+        "order_by": "Vertical",
+        "expected": "^[0-1][0-9]$",
+        "index": -2,
+        "action": "Click",
+        "next": [
+            "clickAutoSweepBattleSupplyOperationButton"
+        ]
+    },
+    "clickAutoSweepBattleSupplyOperationButton": {
+        "doc": "点击自律按钮后，这里有三种结果：自律准备和情报拼图补充，和定向精研的自律准备，以及萨秋斯金权限不足，以及配件达到上限",
+        "recognition": "OCR",
+        "expected": "^自律$",
+        "action": "Click",
+        "post_wait_freezes": 1000,
+        "next": [
+            "AutoSweepBattleSupplyOperationPrepareAccessoriesLimit",
+            "AutoSweepBattleSupplyOperationPrepareInsufficient",
+            "AutoSweepBattleSupplyOperationPrepareIsAccessories",
+            "AutoSweepBattleSupplyOperationPrepare"
+        ]
+    },
+    "AutoSweepBattleSupplyOperationPrepareAccessoriesLimit": {
+        "doc": "自律扫荡配件达到上限",
+        "recognition": "OCR",
+        "roi": [
+            278,
+            193,
+            726,
+            298
+        ],
+        "expected": [
+            "清理库存",
+            "存储上限"
+        ],
+        "focus": {
+            "start": "[color:red]武器配件已达存储上限，请先清理库存[/color]",
+            "toast": "武器配件已达存储上限，请先清理库存"
+        },
+        "next": [
+            "nonScrollablePopupCancel",
+            "accessoriesPopupClose",
+            "returnToHomePage"
+        ]
+    },
+    "AutoSweepBattleSupplyOperationPrepareIsAccessories": {
+        "doc": "确认是否为配件自律页面",
+        "recognition": "OCR",
+        "expected": [
+            "^下一步$",
+            "^下.?$",
+            "^一步$"
+        ],
+        "roi": [
+            645,
+            581,
+            332,
+            94
+        ],
+        "begin": [
+            158,
+            257,
+            256,
+            14
+        ],
+        "end": [
+            158,
+            600,
+            256,
+            14
+        ],
+        "action": "Swipe",
+        "next": [
+            "selectedEffectsCombination",
+            "selectedEffectsCombinationPageTopSwip"
+        ]
+    },
+    "selectedEffectsCombinationPageTopSwip": {
+        "doc": "向上滑动4个效果组合",
+        "is_sub": true,
+        "recognition": "DirectHit",
+        "duration": 500,
+        "action": "Swipe",
+        "begin": [
+            158,
+            513,
+            256,
+            14
+        ],
+        "end": [
+            158,
+            359,
+            256,
+            14
+        ],
+        "post_delay": 1000
+    },
+    "selectedEffectsCombination": {
+        "doc": "选择效果组合",
+        "recognition": "OCR",
+        "roi": [
+            173,
+            225,
+            336,
+            340
+        ],
+        "expected": "^迫近强攻$",
+        "action": "Click",
+        "next": [
+            "selectedEffectsCombinationNextButtonClick"
+        ]
+    },
+    "selectedEffectsCombinationNextButtonClick": {
+        "recognition": "OCR",
+        "expected": [
+            "^下一步$",
+            "^下.?$",
+            "一步$"
+        ],
+        "roi": [
+            645,
+            581,
+            332,
+            94
+        ],
+        "action": "Click",
+        "next": [
+            "AutoSweepBattleSupplyOperationPrepareAccessories"
+        ]
+    },
+    "AutoSweepBattleSupplyOperationPrepareAccessories": {
+        "doc": "定向精研弹窗的逻辑",
+        "recognition": "OCR",
+        "expected": "^自律准备$",
+        "next": [
+            "sliderColorDetectionAccessories",
+            "UserSetSliderValueAccessories",
+            "increaseSliderMaxAccessories",
+            "increaseSliderAccessories"
+        ]
+    },
+    "AutoSweepBattleSupplyOperationPrepareInsufficient": {
+        "doc": "体力不足",
+        "recognition": "OCR",
+        "expected": "^情报拼图补充$",
+        "next": [
+            "nonScrollablePopupCancel",
+            "returnToHomePage"
+        ]
+    },
+    "AutoSweepBattleSupplyOperationPrepare": {
+        "doc": "先判断是否是红色，-1后 然后判断是否是最大值(非定向精研)",
+        "recognition": "OCR",
+        "expected": "^自律准备$",
+        "next": [
+            "sliderColorDetection",
+            "UserSetSliderValue",
+            "increaseSliderMax",
+            "increaseSlider"
+        ]
+    },
+    "supplyOperationTypeIsAccessories": {
+        "recognition": "OCR",
+        "expected": "^定向精研$",
+        "action": "DoNothing",
+        "next": [
+            "switchAccessoriesTag"
+        ]
+    },
+    "switchAccessoriesTag": {
+        "recognition": "OCR",
+        "expected": "^突击",
+        "action": "Click",
+        "next": [
+            "supplyOperationLevelPageTopSwip"
+        ]
+    }
+}

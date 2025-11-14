@@ -1,0 +1,199 @@
+// 活动层太卡，有的用户那里识别得太快，这里的延迟专门调整 1000
+{
+    "开始美味烹调任务": {
+        "next": [
+            "进入活动层-美味烹调"
+        ]
+    },
+    "进入活动层-美味烹调": {
+        "recognition": "OCR",
+        "expected": "活动层",
+        "action": "Click",
+        "post_wait_freezes": 1000,
+        "timeout": 40000,
+        "next": [
+            "已进入活动层-美味烹调"
+        ],
+        "interrupt": [
+            "活动层等级提升"
+        ]
+    },
+    "已进入活动层-美味烹调": {
+        "recognition": "TemplateMatch",
+        "template": "活动层/退出.png",
+        "green_mask": true,
+        "next": [
+            "已有用餐效果",
+            "走向美味烹调"
+        ]
+    },
+    "已有用餐效果": {
+        "recognition": "TemplateMatch",
+        "template": "活动层/用餐效果.png",
+        "green_mask": true,
+        "roi": [
+            12,
+            612,
+            178,
+            94
+        ],
+        "post_wait_freezes": 1000,
+        "next": [
+            "退出活动层-美味烹调"
+        ]
+    },
+    "走向美味烹调": {
+        "action": "Swipe",
+        "begin": [
+            190,
+            538,
+            1,
+            1
+        ],
+        "end": [
+            190,
+            548,
+            1,
+            1
+        ],
+        "duration": 1000,
+        "post_wait_freezes": 1000,
+        "next": [
+            "进入美味烹调区域",
+            "走向美味烹调"
+        ]
+    },
+    "进入美味烹调区域": {
+        "recognition": "OCR",
+        "expected": "美味烹调",
+        "action": "Click",
+        "post_wait_freezes": 1000,
+        "next": [
+            "每天第一次免费美味烹调",
+            "不是每天第一次免费美味烹调，返回活动层"
+        ]
+    },
+    "每天第一次免费美味烹调": {
+        "recognition": "OCR",
+        "expected": "每日首次免费",
+        "action": "Click",
+        "post_wait_freezes": 1000,
+        "next": [
+            "邀请人形-美味烹调"
+        ]
+    },
+    "不是每天第一次免费美味烹调，返回活动层": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "公用按钮组件/返回上一页_black_v2.png",
+            "公用按钮组件/返回上一页_gray_v2.png"
+        ],
+        "action": "Click",
+        "green_mask": true,
+        "post_wait_freezes": 1000,
+        "next": "退出活动层-美味烹调"
+    },
+    "返回活动层-美味烹调": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "公用按钮组件/返回上一页_black_v2.png",
+            "公用按钮组件/返回上一页_gray_v2.png"
+        ],
+        "action": "Click",
+        "green_mask": true,
+        "post_wait_freezes": 1000,
+        "next": "退出活动层-美味烹调"
+    },
+    "邀请人形-美味烹调": {
+        "recognition": "OCR",
+        "expected": [
+            "^下一步$",
+            "^下.?$"
+        ],
+        "action": "Click",
+        "post_wait_freezes": 1000,
+        "next": [
+            "确认邀请-美味烹调"
+        ]
+    },
+    "确认邀请-美味烹调": {
+        "recognition": "OCR",
+        "expected": "确认邀请",
+        "action": "Click",
+        "post_wait_freezes": 1000,
+        "next": [
+            "确认结果-美味烹调",
+            "跳过动画-美味烹调",
+            "确认邀请-美味烹调"
+        ]
+    },
+    "跳过动画-美味烹调": {
+        "recognition": "OCR",
+        "expected": [
+            "跳过动画",
+            "跳过"
+        ],
+        "action": "Click",
+        // paddleOCR v5 mobile 会有三种识别结果
+        // 1. 跳过
+        // 2. M跳过
+        // 3. 自动M跳过
+        // 所以改为点击指定位置
+        "target": [
+            1205,
+            32,
+            17,
+            15
+        ],
+        "post_wait_freezes": 1000,
+        "next": [
+            "确认结果-美味烹调",
+            "跳过动画-美味烹调"
+        ]
+    },
+    "确认结果-美味烹调": {
+        "recognition": "OCR",
+        "expected": "确认",
+        "action": "Click",
+        "post_wait_freezes": 1000,
+        "next": [
+            "退出活动层-美味烹调",
+            "确认结果-美味烹调"
+        ],
+        "interrupt": [
+            "活动层等级提升"
+        ]
+    },
+    "退出活动层-美味烹调": {
+        "recognition": "TemplateMatch",
+        "template": "活动层/退出.png",
+        "green_mask": true,
+        "action": "Click",
+        "post_wait_freezes": 1000,
+        "next": [
+            "确认退出活动层-美味烹调"
+        ],
+        "interrupt": [
+            "活动层等级提升"
+        ]
+    },
+    "确认退出活动层-美味烹调": {
+        "recognition": "OCR",
+        "expected": "确认",
+        "action": "Click",
+        "post_wait_freezes": 1000,
+        "next": [
+            "美味烹调任务结束"
+        ]
+    },
+    "美味烹调任务结束": {
+        "recognition": "OCR",
+        "expected": "战役推进",
+        "post_wait_freezes": 1000,
+        "next": [
+            "开始茶歇一刻任务",
+            "开始逸趣导算任务",
+            "HomePage"
+        ]
+    }
+}

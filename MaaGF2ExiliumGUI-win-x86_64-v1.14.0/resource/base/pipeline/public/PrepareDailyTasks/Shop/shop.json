@@ -1,0 +1,168 @@
+{
+    "enterShop": {
+        "enabled": true,
+        "recognition": "OCR",
+        "expected": "^商城$",
+        "post_wait_freezes": 200,
+        "action": "Click",
+        "next": [
+            "clickQualitySelection"
+        ]
+    },
+    "clickQualitySelection": {
+        "recognition": "OCR",
+        "expected": "^品质甄选$",
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "next": [
+            "clickTimeLimitedGiftPackage"
+        ]
+    },
+    "clickTimeLimitedGiftPackage": {
+        "recognition": "OCR",
+        "expected": "^限时礼包$",
+        "action": "Click",
+        "post_wait_freezes": 800,
+        "next": [
+            "TimeLimitedGiftPackagePageSwipe"
+        ],
+        "focus": {
+            "succeeded": "已进入购买每周礼包页"
+        }
+    },
+    "TimeLimitedGiftPackagePageSwipe": {
+        "doc": "从下向上滑动",
+        "recognition": "DirectHit",
+        "action": "Swipe",
+        "begin": [
+            1132,
+            366,
+            1,
+            1
+        ],
+        "end": [
+            1132,
+            291,
+            1,
+            1
+        ],
+        "post_wait_freezes": 1000,
+        "next": [
+            "clickWeekSupplyBox",
+            "clickPermanentGiftPackage"
+        ]
+    },
+    "clickWeekSupplyBox": {
+        "doc": "点击每周补给箱",
+        "recognition": "TemplateMatch",
+        "template": [
+            "每日免费礼包/每周补给箱.png"
+        ],
+        "threshold": 0.87,
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "next": [
+            "confirmWeekSupplyBoxPurchase"
+        ]
+    },
+    "confirmWeekSupplyBoxPurchase": {
+        "recognition": "OCR",
+        "expected": "^(购买|确认)$",
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "next": [
+            "closeWeekSupplyBoxPurchaseResultPage"
+        ]
+    },
+    "closeWeekSupplyBoxPurchaseResultPage": {
+        "recognition": "OCR",
+        "expected": "点击",
+        "action": "Click",
+        "post_delay": 1000,
+        "next": [
+            "closeWeekSupplyBoxPurchaseResultPage",
+            "clickPermanentGiftPackage"
+        ]
+    },
+    "clickPermanentGiftPackage": {
+        "recognition": "OCR",
+        "expected": "^周期礼包$",
+        "action": "Click",
+        "post_delay": 1500,
+        "next": [
+            "clickDailySupplyBox",
+            "exitGameStore"
+        ],
+        "focus": {
+            "succeeded": "已进入购买每日礼包页"
+        }
+    },
+    "clickDailySupplyBox": {
+        "doc": "点击每日补给箱",
+        "recognition": "TemplateMatch",
+        "template": [
+            "每日免费礼包/每日补给箱.png"
+        ],
+        "threshold": 0.87,
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "next": [
+            "confirmSupplyBoxPurchase"
+        ]
+    },
+    "confirmSupplyBoxPurchase": {
+        "recognition": "OCR",
+        "expected": "^(购买|确认)$",
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "next": [
+            "closeSupplyBoxPurchaseResultPage"
+        ]
+    },
+    "closeSupplyBoxPurchaseResultPage": {
+        "recognition": "OCR",
+        "expected": "点击",
+        "action": "Click",
+        "post_delay": 1500,
+        "next": [
+            "closeSupplyBoxPurchaseResultPage",
+            "checkDailyPaidGift",
+            "exitGameStore"
+        ]
+    },
+    "checkDailyPaidGift": {
+        "recognition": "OCR",
+        "expected": "每日晶条礼包",
+        "roi": [
+            409,
+            136,
+            350,
+            164
+        ],
+        "post_delay": 1000,
+        "next": [
+            "closeDailyPaidGiftPage"
+        ]
+    },
+    "closeDailyPaidGiftPage": {
+        "recognition": "OCR",
+        "expected": "取消",
+        "action": "Click",
+        "next": [
+            "exitGameStore"
+        ]
+    },
+    "exitGameStore": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "公用按钮组件/主页按钮_gray.png",
+            "公用按钮组件/主页按钮_black.png"
+        ],
+        "action": "Click",
+        "post_delay": 2500,
+        "next": [
+            "enterBoundaryAdvanceAction",
+            "HomePage"
+        ]
+    }
+}

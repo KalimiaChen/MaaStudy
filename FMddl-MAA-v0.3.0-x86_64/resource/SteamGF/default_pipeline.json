@@ -1,0 +1,8 @@
+{
+    "Default": {
+        "rate_limit": 900,
+        "pre_wait_freezes": 300,
+        "post_wait_freezes": 300,
+        "threshold": 0.6
+    }
+}

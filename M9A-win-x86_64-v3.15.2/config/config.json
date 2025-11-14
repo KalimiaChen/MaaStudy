@@ -1,0 +1,414 @@
+{
+  "ColorTheme": {
+    "DisplayName": "Blue",
+    "Primary": {
+      "A": 255,
+      "R": 10,
+      "G": 89,
+      "B": 247
+    },
+    "PrimaryBrush": "#ff0a59f7",
+    "PrimaryDark": {
+      "A": 255,
+      "R": 5,
+      "G": 44,
+      "B": 123
+    },
+    "PrimaryDarkBrush": "#ff052c7b",
+    "Accent": {
+      "A": 255,
+      "R": 247,
+      "G": 168,
+      "B": 10
+    },
+    "AccentBrush": "#fff7a80a",
+    "AccentDark": {
+      "A": 255,
+      "R": 123,
+      "G": 84,
+      "B": 5
+    },
+    "AccentDarkBrush": "#ff7b5405"
+  },
+  "BaseTheme": "Light",
+  "CurrentLanguage": "zh-hans",
+  "CurrentTasks": [
+    "启动游戏<|||>StartUp",
+    "收取荒原<|||>Wilderness",
+    "每日心相（意志解析）<|||>Psychube",
+    "常规作战<|||>Combat",
+    "常规作战（自定义）<|||>Combat",
+    "活动刷取<|||>CombatActivity",
+    "自动深眠<|||>Limbo",
+    "自动醒梦<|||>Lucidscape",
+    "银行购物<|||>Bank",
+    "领取奖励<|||>Awards",
+    "当期轶事<|||>Anecdote",
+    "雨中悬想：迷思海<|||>ReveriesInTheRain",
+    "切换账号<|||>SwitchAccount",
+    "关闭游戏<|||>Close1999",
+    "局外演绎：黄昏的音序<|||>SeriesOfDusks",
+    "复刻活动推图<|||>SSReopen",
+    "匣中交流赛（拓片杂技赛）<|||>角斗场",
+    "警铃鸣响时（需高练度）<|||>TheAlarm",
+    "(测试中)推图模式<|||>StagePromotion",
+    "翻斗棋速刷<|||>CritterCrash",
+    "雨前漫游指南<|||>PreStormProtocolStart"
+  ],
+  "Resource": "官服",
+  "TaskItems": [
+    {
+      "name": "启动游戏",
+      "entry": "StartUp",
+      "check": false
+    },
+    {
+      "name": "收取荒原",
+      "entry": "Wilderness",
+      "check": false,
+      "option": [
+        {
+          "name": "好梦井",
+          "index": 0
+        },
+        {
+          "name": "魔精收菜",
+          "index": 0
+        },
+        {
+          "name": "交付订单",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "每日心相（意志解析）",
+      "entry": "Psychube",
+      "check": false,
+      "option": [
+        {
+          "name": "双重解析加成作战",
+          "index": 0
+        },
+        {
+          "name": "吃糖",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "常规作战",
+      "entry": "Combat",
+      "doc": [
+        "图看不清可以拉伸下这个小窗口\n![bydjl](https://mojing.org/tjb)"
+      ],
+      "check": false,
+      "advanced": [
+        {
+          "data": {
+            "作战次数": "0"
+          },
+          "name": "作战次数"
+        }
+      ],
+      "option": [
+        {
+          "name": "作战关卡",
+          "index": 0
+        },
+        {
+          "name": "吃糖",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "常规作战（自定义）",
+      "entry": "Combat",
+      "doc": [
+        "仅限刷材料关卡\n![bydjl](https://mojing.org/tjb)"
+      ],
+      "check": false,
+      "advanced": [
+        {
+          "data": {
+            "章节号": "2",
+            "关卡号": "6",
+            "难度": "Hard"
+          },
+          "name": "作战关卡（自定义）"
+        },
+        {
+          "data": {
+            "作战次数": "0"
+          },
+          "name": "作战次数"
+        }
+      ],
+      "option": [
+        {
+          "name": "吃糖",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "活动刷取",
+      "entry": "CombatActivity",
+      "doc": [
+        "主线版本时关闭复刻模式会直接跳过当前任务，如有刷取主线关卡需求请使用常规作战功能"
+      ],
+      "check": false,
+      "advanced": [
+        {
+          "data": {
+            "作战次数": "0"
+          },
+          "name": "作战次数"
+        }
+      ],
+      "option": [
+        {
+          "name": "复刻模式",
+          "index": 0
+        },
+        {
+          "name": "活动难度",
+          "index": 0
+        },
+        {
+          "name": "吃糖",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "自动深眠",
+      "entry": "Limbo",
+      "doc": [
+        "[size:15][color:tomato]注意上下半编队不要重复。支持旧版和改版编队、支持编队自定义命名，未来可支持编队超出前四个[/color][/size]"
+      ],
+      "check": false,
+      "option": [
+        {
+          "name": "上半编队",
+          "index": 0
+        },
+        {
+          "name": "下半编队",
+          "index": 0
+        },
+        {
+          "name": "仅领取每周浅眠域奖励",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "自动醒梦",
+      "entry": "Lucidscape",
+      "doc": [
+        "[size:15][color:tomato]注意上下半编队不要重复。支持旧版和改版编队、支持编队自定义命名，未来可支持编队超出前四个[/color][/size]"
+      ],
+      "check": false,
+      "option": [
+        {
+          "name": "醒梦上半编队",
+          "index": 0
+        },
+        {
+          "name": "醒梦下半编队",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "银行购物",
+      "entry": "Bank",
+      "doc": [
+        "[size:15][color:tomato]单账号模式下会跳过当前周期执行过的任务[/color][/size]"
+      ],
+      "check": false,
+      "option": [
+        {
+          "name": "单账号（银行）",
+          "index": 0
+        },
+        {
+          "name": "柜台特奉",
+          "index": 0
+        },
+        {
+          "name": "金兔子(低阶柜台)",
+          "index": 0
+        },
+        {
+          "name": "紫地球仪(低阶柜台)",
+          "index": 0
+        },
+        {
+          "name": "蓝地球仪(低阶柜台)",
+          "index": 0
+        },
+        {
+          "name": "饕餮",
+          "index": 0
+        },
+        {
+          "name": "蓝地球仪(心相观测)",
+          "index": 0
+        },
+        {
+          "name": "共鸣晶匣",
+          "index": 0
+        },
+        {
+          "name": "金瓜子(梦境记述)",
+          "index": 0
+        },
+        {
+          "name": "原味鸡(梦境记述)",
+          "index": 0
+        },
+        {
+          "name": "大薯(梦境记述)",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "领取奖励",
+      "entry": "Awards",
+      "check": false,
+      "option": [
+        {
+          "name": "获取显影罐",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "当期轶事",
+      "entry": "Anecdote",
+      "check": false
+    },
+    {
+      "name": "雨中悬想：迷思海",
+      "entry": "ReveriesInTheRain",
+      "doc": [
+        "[size:15][color:tomato]本功能仅完成“寻思”每周扫荡[/color][/size]"
+      ],
+      "check": false,
+      "option": [
+        {
+          "name": "单账号（迷思海）",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "切换账号",
+      "entry": "SwitchAccount",
+      "doc": [
+        "[size:15][color:tomato]本功能仅会切换至最后一个账号（超过3个的账号会被忽略）[/color][/size]\n[size:15][color:tomato]切换后可继续添加任务，以便多账号多配置运行任务[/color][/size]\n[size:15][color:tomato]目前该功能支持官服和b服，且建议使用该功能的用户将模拟器分辨率调至1280*720[/color][/size]"
+      ],
+      "check": false
+    },
+    {
+      "name": "关闭游戏",
+      "entry": "Close1999",
+      "check": false
+    },
+    {
+      "name": "局外演绎：黄昏的音序",
+      "entry": "SeriesOfDusks",
+      "doc": [
+        "[size:15][color:darkgray]本功能有两种模式，触媒选择仅在非速刷模式生效，开启速刷模式后仅使用术式神灯刷取第一层[/color][/size]\n[size:18][color:black]速刷模式[/color][/size]\n[size:15][color:darkgray]1.使用前请先将`刻画生长-指引之歌`以及`刻画生长-建筑章程`点满[/color][/size]\n[size:15][color:darkgray]2.请尽量调高难度等级(11难度达到最高信用效率)以及点足科技树中信用效率加成，以防止分数不够2k5导致刷取信物失败[/color][/size]\n[size:18][color:black]非速刷模式[/color][/size]\n[size:15][color:darkgray]1.可在箱子里置顶(标记)四个角色出战[/color][/size]\n[size:15][color:darkgray]2.队伍推荐携带奶[/color][/size]\n[size:15][color:darkgray]3.M9A不能检查是否处于自动战斗状态，请自行调整[/color][/size]\n[size:15][color:orange]⚠更多详细说明请看文档[/color][/size]"
+      ],
+      "check": false,
+      "option": [
+        {
+          "name": "触媒选择",
+          "index": 0
+        },
+        {
+          "name": "速刷模式",
+          "index": 0
+        },
+        {
+          "name": "演绎难度",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "复刻活动推图",
+      "entry": "SSReopen",
+      "doc": [
+        "本任务根据任务列表完成任务，仅支持已打过的往期活动推图"
+      ],
+      "check": false,
+      "option": [
+        {
+          "name": "吃糖",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "匣中交流赛（拓片杂技赛）",
+      "entry": "角斗场",
+      "doc": [
+        "[size:15][color:darkgray]本功能仅完成“角斗场”第一层扫荡[/color][/size]，\n[size:15][color:red]请手动打开角斗场页面[/color][/size]"
+      ],
+      "check": false
+    },
+    {
+      "name": "警铃鸣响时（需高练度）",
+      "entry": "TheAlarm",
+      "doc": [
+        "[size:15][color:tomato]本功能不换角色，debuff吃满，故只适合高练队伍挂机。推荐配队：三巨头（薪电启）+图图石子、追击队。使用前请手动打开警铃鸣响时主页面（中间有雨迹追查和雨痕处置字样）[/color][/size]\n[size:14][color:deepskyblue]“速刷选项”：直接打boss关，没有五号位buff，适合大成三巨头+双奶妈挂机通关。非速刷则会选择拉满五号位buff后再打boss，提高通关稳定性。[/color][/size]\n[size:14][color:deepskyblue]测试用队伍：诺谛卡 + 圈 + 蘑菇 + 塞梅 + 图图（注意五号位放主C）[/color][/size]"
+      ],
+      "check": false,
+      "option": [
+        {
+          "name": "扫荡难度",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "name": "(测试中)推图模式",
+      "entry": "StagePromotion",
+      "doc": [
+        "[size:15][color:tomato]本功能处于测试中，不保证正常运行。当前本功能主线不可用。[/color][/size]\n[size:15][color:tomato]使用时请先手动打开需要推图的页面，如当期活动、佚事等，然后再运行此任务[/color][/size]"
+      ],
+      "check": false
+    },
+    {
+      "name": "翻斗棋速刷",
+      "entry": "CritterCrash",
+      "doc": [
+        "[size:15][color:tomato]在翻斗棋界面启动，仅支持1600分以下速刷。[/color][/size]"
+      ],
+      "check": false
+    },
+    {
+      "name": "雨前漫游指南",
+      "entry": "PreStormProtocolStart",
+      "doc": [
+        "该任务需单独运行。运行前请将游戏停在小游戏主页面。\n该任务分为两种情况：\n1.未击败教程中第三天的boss（即点击“开始模拟”后不是难度选择界面）\n2.已击败教程中第三天的boss（即点击“开始模拟”后进入难度选择界面）\n\n请根据个人情况选择对应选项。"
+      ],
+      "check": false,
+      "option": [
+        {
+          "name": "雨前漫游刷取模式",
+          "index": 0
+        }
+      ]
+    }
+  ],
+  "EnableEdit": false,
+  "UI.MainWindow.Width": "1440",
+  "UI.MainWindow.Height": "791.5"
+}

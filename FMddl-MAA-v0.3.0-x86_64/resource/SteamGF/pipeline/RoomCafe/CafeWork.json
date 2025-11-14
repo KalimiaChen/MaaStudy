@@ -1,0 +1,197 @@
+{
+    "CafeWork_Machine": {
+        "pre_wait_freeze": 200,
+        "post_wait_freezes": 200,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    0,
+                    200,
+                    700,
+                    400
+                ],
+                "template": [
+                    "Room/CafeNewStory.png",
+                    "Room/CafeNewStory_720p.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "CafeWork_NewStory",
+            "CafeWork_NewStorySign",
+            "CafeWork_ButtonCancel",
+            "EnterHome"
+        ]
+    },
+    "CafeWork_NewStorySign": {
+        "post_wait_freezes": {
+            "time": 2000,
+            "param": {
+                "target" : [
+                    810,
+                    0,
+                    200,
+                    720
+                ]
+            }
+        },
+        "post_delay": 4000,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    73,
+                    43,
+                    806,
+                    664
+                ],
+                "template": [
+                    "Room/RoomCafeSign.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    20,
+                    20,
+                    10,
+                    10
+                ]
+            }
+        },
+        "next": [
+            "CafeWork_NewStory",
+            "CafeWork_NewStorySign",
+            "CafeWork_ButtonCancel"
+        ]
+    },
+    "CafeWork_NewStory": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    600,
+                    0,
+                    625,
+                    720
+                ],
+                "template": [
+                    "Room/RoomCafeNewStory.png"
+                ],
+                "green_mask": true
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "CafeWork_NewStory",
+            "CafeWork_StorySkip",
+            "CafeWork_StoryReward"
+        ]
+    },
+    "CafeWork_StorySkip": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    0,
+                    0,
+                    1900,
+                    200
+                ],
+                "expected": [
+                    "跳过",
+                    "记录",
+                    "自动",
+                    "隐藏"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    1191,
+                    0,
+                    88,
+                    34
+                ]
+            }
+        },
+        "next": [
+            "CafeWork_StorySkip",
+            "CafeWork_StoryReward",
+            "CafeWork_Machine"
+        ]
+    },
+    "CafeWork_StoryReward": {
+        "rate_limit": 200,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    900,
+                    100,
+                    380,
+                    350
+                ],
+                "expected": [
+                    "REW",
+                    "REV",
+                    "ARD"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target": [
+                    231,
+                    102,
+                    218,
+                    109
+                ]
+            }
+        },
+        "next": [
+            "CafeWork_StoryReward",
+            "CafeWork_Machine",
+            "EnterHome"
+        ]
+    },
+    "CafeWork_ButtonCancel": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    60,
+                    45,
+                    340,
+                    370
+                ],
+                "template": [
+                    "Room/RoomButtonCancelA.png",
+                    "Room/RoomButtonCancelB.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Key",
+            "param": {
+                "key": 27
+            }
+        },
+        "next": [
+            "CafeWork_ButtonCancel",
+            "EnterHome"
+        ]
+    }
+}

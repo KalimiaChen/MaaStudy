@@ -1,0 +1,19 @@
+{
+    "PublicAreaDailyTasks": {
+        "doc": "公共区日常",
+        "next": [
+            "clickPublicAreaDailyButton"
+        ],
+        "interrupt": [
+            "StartGame"
+        ]
+    },
+    "clickPublicAreaDailyButton": {
+        "next": [
+            "enterLoungeAction",
+            "enterDispatchCenterAction",
+            "enterSchedulingGainsAction",
+            "returnToHomePage"
+        ]
+    }
+}

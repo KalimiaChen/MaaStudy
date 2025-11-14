@@ -1,0 +1,31 @@
+{
+    "resource": "B服",
+    "controller": {
+        "name": "安卓端"
+    },
+    "task": [
+        {
+            "name": "器者征集",
+            "option": [
+                {
+                    "name": "征集几个",
+                    "value": "征集1个"
+                }
+            ],
+            "__vscKey": "45bf46b8-6071-43a1-91db-96d1e7a2bb21"
+        }
+    ],
+    "adb": {
+        "adb_path": "E:/mumu12/mumu12/MuMu Player 12/shell/adb.exe",
+        "address": "127.0.0.1:16384",
+        "config": {
+            "extras": {
+                "mumu": {
+                    "enable": true,
+                    "index": 0,
+                    "path": "E:/mumu12/mumu12/MuMu Player 12"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,143 @@
+{
+    "flower": {
+        "doc": "生长数据",
+        "next": [
+            "enterFlowerDisassemblyPage"
+        ]
+    },
+    "enterFlowerDisassemblyPage": {
+        "doc": "进入拆解界面",
+        "recognition": "OCR",
+        "expected": "拆解",
+        "roi": [686,9,574,67],
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "flowerDisassemblyPageEntered"
+        ]
+    },
+    "flowerDisassemblyPageEntered": {
+        "doc": "已进入拆解界面",
+        "recognition": "OCR",
+        "expected": "请选择要拆解的道具",
+        "next": [
+            "selectFlowerTab"
+        ]
+    },
+    "selectFlowerTab": {
+        "doc": "选择生长数据标签页",
+        "recognition": "TemplateMatch",
+        "template": [
+            "仓库/生长数据亮.png",
+            "仓库/生长数据暗.png"
+        ],
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "flowerTabSelected"
+        ]
+    },
+    "flowerTabSelected": {
+        "doc": "生长数据标签页已选中",
+        "recognition": "OCR",
+        "expected": "生长数据",
+        "next": [
+            "noFlowerLeft",
+            "selectFlowerLevel"
+        ]
+    },
+    "noFlowerLeft": {
+        "doc": "无可拆解生长数据",
+        "recognition": "OCR",
+        "expected": "无可拆解生长数据",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "exitFlower"
+        ]
+    },
+    "selectFlowerLevel": {
+        "doc": "选择生长数据等级",
+        "recognition": "OCR",
+        "expected": "及以下",
+        "action": "Click",
+        "target": true,
+        "post_wait_freezes": 500,
+        "next": [
+            "chooseFlowerLevel"
+        ]
+    },
+    "chooseFlowerLevel": {
+        "doc": "选择需要拆解的级别",
+        "recognition": "OCR",
+        "expected": "工业级及以下",
+        "action": "Click",
+        "target": true,
+        "post_wait_freezes": 500,
+        "next": [
+            "quickSelectFlower"
+        ]
+    },
+    "quickSelectFlower": {
+        "doc": "快捷选择,",
+        "recognition": "OCR",
+        "expected": "快捷选择",
+        "action": "Click",
+        "target": true,
+        "post_wait_freezes": 500,
+        "next": [
+            "有物品可拆解-生长数据",
+            "exitFlower"
+        ]
+    },
+    "有物品可拆解-生长数据": {
+        "recognition": "OCR",
+        "expected": "共选",
+        "post_delay": 500,
+        "next": [
+            "disassemblyFlower"
+        ]
+    },
+    "disassemblyFlower": {
+        "doc": "点击拆解键",
+        "recognition": "TemplateMatch",
+        "template": [
+            "仓库/拆解按钮.png"
+        ],
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "closeFlowerResultByClickingBlank",
+            "flowerResultClosed"
+        ]
+    },
+    "closeFlowerResultByClickingBlank": {
+        "recognition": "OCR",
+        "expected": "点击空白处关闭",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "flowerResultClosed"
+        ]
+    },
+    "flowerResultClosed": {
+        "recognition": "OCR",
+        "expected": "请选择要拆解的道具",
+        "post_wait_freezes": 500,
+        "next": [
+            "noFlowerLeft",
+            "quickSelectFlower"
+        ]
+    },
+    "exitFlower": {
+        "recognition": "OCR",
+        "expected": "仓库",
+        "roi": [686,9,574,67],
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "itemBox",
+            "returnToHomePage"
+        ]
+    }
+}

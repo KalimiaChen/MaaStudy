@@ -1,0 +1,717 @@
+{
+    "EventSalvage_SwipetoAirport": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    0,
+                    420,
+                    300,
+                    300
+                ],
+                "expected": [
+                    "计划模式"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+"begin" : [50,378,1,1],
+"end" : [50,380,1,1]
+            }
+        },
+        "next": [
+            "EventSalvage_Prepare",
+            "EventSalvage_SwipetoAirport"
+        ]
+    },
+    "EventSalvage_Prepare": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    263,
+                    74,
+                    963,
+                    594
+                ],
+                "template": [
+                    "EventNow/EventAirport1A.png",
+                    "EventNow/EventAirport1B.png",
+                    "EventNow/EventAirport2A.png",
+                    "EventNow/EventAirport2B.png"
+                ],
+                "threshold": 0.5
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "EventSalvage_ChooseTeam",
+            "EventSalvage_SwipeTeamUp",
+            "EventSalvage_Prepare"
+        ],
+        "timeout": 60000
+    },
+    "EventSalvage_SwipeTeamUp": {
+        "recognition": {
+            "type": "ocr",
+            "param": {
+                "roi" : [
+                    0,
+                    0,
+                    497,
+                    379
+                ],
+                "expected": [
+                    "选择梯",
+                    "择梯队"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin" : [
+                    80,
+                    649,
+                    1,
+                    1
+                ],
+                "end" : [
+                    80,
+                    181,
+                    1,
+                    1
+                ]
+            }
+        },
+        "next": [
+            "EventSalvage_ChooseTeam",
+            "EventSalvage_SwipeTeamDown"
+        ]
+    },
+    "EventSalvage_SwipeTeamDown": {
+        "recognition": {
+            "type": "ocr",
+            "param": {
+                "roi" : [
+                    0,
+                    0,
+                    497,
+                    379
+                ],
+                "expected": [
+                    "选择梯",
+                    "择梯队"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin" : [
+                    80,
+                    181,
+                    1,
+                    1
+                ],
+                "end" : [
+                    80,
+                    649,
+                    1,
+                    1
+                ]
+            }
+        },
+        "next": [
+            "EventSalvage_ChooseTeam",
+            "EventSalvage_SwipeTeamUp"
+        ]
+    },
+    "EventSalvage_ChooseTeam": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    0,
+                    0,
+                    225,
+                    720
+                ],
+                "template": [
+                    "Fight/TeamCaution1A.png",
+                    "Fight/TeamCaution1B.png",
+                    "Fight/TeamEchelon1A.png",
+                    "Fight/TeamEchelon1B.png",
+                    "Fight/TeamCaution1A_720p.png",
+                    "Fight/TeamCaution1B_720p.png",
+                    "Fight/TeamEchelon1A_720p.png",
+                    "Fight/TeamEchelon1B_720p.png"
+                ],
+                "threshold": 0.83
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "EventSalvage_FixTeam",
+            "EventSalvage_YesTeam",
+            "EventSalvage_ChooseTeam"
+        ]
+    },
+    "EventSalvage_FixTeam": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    500,
+                    560,
+                    1000,
+                    250
+                ],
+                "expected": [
+                    "一键",
+                    "修复"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "EventSalvage_YesTeam",
+            "EventSalvage_FixTeam"
+        ]
+    },
+    "EventSalvage_YesTeam": {
+        "pre_wait_freezes": 200,
+        "post_wait_freezes": 200,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    600,
+                    300,
+                    680,
+                    420
+                ],
+                "expected": [
+                    "确定",
+                    "确认"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    30,
+                    4,
+                    -30,
+                    -4
+                ]
+            }
+        },
+        "next": [
+            "EventSalvage_YesTeam",
+            "EventSalvage_StartFight"
+        ]
+    },
+    "EventSalvage_StartFight": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    600,
+                    300,
+                    680,
+                    420
+                ],
+                "expected": [
+                    "点击指挥部",
+                    "进行部署"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    30,
+                    4,
+                    -30,
+                    -4
+                ]
+            }
+        },
+        "next": [
+            "EventSalvage_StartFight",
+            "EventSalvage_ClickTeam",
+            "EventSalvage_SwipeL",
+            "EventSalvage_SwipeRMild"
+        ]
+    },
+    "EventSalvage_SwipeL": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    0,
+                    420,
+                    300,
+                    300
+                ],
+                "expected": [
+                    "计划模式"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin" : [
+                    300,
+                    251,
+                    1,
+                    1
+                ],
+                "end" : [
+                    600,
+                    251,
+                    1,
+                    1
+                ]
+            }
+        },
+        "next": [
+            "EventSalvage_ClickTeam",
+            "EventSalvage_SwipeRMild"
+        ]
+    },
+    "EventSalvage_SwipeRMild": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    0,
+                    420,
+                    300,
+                    300
+                ],
+                "expected": [
+                    "计划模式"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "begin" : [
+                    956,
+                    251,
+                    1,
+                    1
+                ],
+                "end" : [
+                    894,
+                    251,
+                    1,
+                    1
+                ]
+            }
+        },
+        "next": [
+            "EventSalvage_ClickTeam",
+            "EventSalvage_SwipeRMild"
+        ]
+    },
+    "EventSalvage_ClickTeam": {
+        "pre_wait_freezes": 300,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "expected": [
+                    "第"
+                ],
+                "threshold": 0.6
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    -130,
+                    40,
+                    -30,
+                    -4
+                ]
+            }
+        },
+        "next": [
+            "EventSalvage_SupplyTeam",
+            "EventSalvage_SwipetoTarget",
+            "EventSalvage_ClickTeam",
+            "EventSalvage_SwipeRMild"
+        ]
+    },
+    "EventSalvage_SupplyTeam": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    700,
+                    460,
+                    580,
+                    260
+                ],
+                "template": [
+                    "Fight/TeamSupply.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "EventSalvage_SupplyTeam",
+            "EventSalvage_ButtonFairy",
+            "EventSalvage_ScheduleMode"
+        ]
+    },
+    "EventSalvage_ButtonFairy": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    1000,
+                    130,
+                    900,
+                    177
+                ],
+                "expected": [
+                    "关"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "EventSalvage_SupplyTeam",
+            "EventSalvage_ButtonFairy",
+            "EventSalvage_ScheduleMode"
+        ]
+    },
+    "EventSalvage_ScheduleMode": {
+        "pre_wait_freezes": 300,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    0,
+                    420,
+                    300,
+                    300
+                ],
+                "expected": [
+                    "计划模式"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    30,
+                    4,
+                    -30,
+                    -4
+                ]
+            }
+        },
+        "next": [
+            "EventSalvage_SwipetoTarget"
+        ]
+    },
+
+    "EventSalvage_SwipetoTarget": {
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    0,
+                    420,
+                    300,
+                    300
+                ],
+                "template": [
+                    "Fight/ScheduleOn.png",
+                    "Fight/ScheduleOn_720p.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "duration": 100,
+"begin" : [823,127,1,1],
+"end" : [693,517,1,1]
+            }
+        },
+        "next": [
+            "EventSalvage_PressEnemyAccident",
+            "EventSalvage_ClickTarget",
+            "EventSalvage_SwipetoTarget"
+        ]
+    },
+    "EventSalvage_PressEnemyAccident": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    791,
+                    0,
+                    424,
+                    392
+                ],
+                "expected": [
+                    "敌方梯队",
+                    "阵型",
+                    "驻守",
+                    "警戒",
+                    "消灭"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target" : [
+                    309,
+                    52,
+                    200,
+                    200
+                ]
+            }
+        },
+        "next": [
+            "EventSalvage_PressEnemyAccident",
+            "EventSalvage_ClickTeam",
+            "EventSalvage_SwipetoTeam"
+        ]
+    },
+    "EventSalvage_SwipetoTeam": {
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    0,
+                    420,
+                    300,
+                    300
+                ],
+                "expected": [
+                    "计划模式"
+                ]
+            }
+        },
+        "action": {
+            "type": "Swipe",
+            "param": {
+                "duration": 100,
+"begin" : [694,516,1,1],
+"end" : [824,126,1,1]
+            }
+        },
+        "next": [
+            "EventSalvage_PressEnemyAccident",
+            "EventSalvage_ClickTeam",
+            "EventSalvage_SwipetoTeam"
+        ]
+    },
+    "EventSalvage_ClickTarget": {
+        "pre_wait_freezes": 300,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    0,
+                    60,
+                    1900,
+                    660
+                ],
+                "template": [
+"Fight/AirportCloseA.png",
+"Fight/AirportCloseB.png",
+"Fight/AirportCloseC.png",
+"Fight/AirportCloseA_720p.png",
+"Fight/AirportCloseB_720p.png",
+"Fight/AirportCloseC_720p.png"
+                ],
+                "threshold": 0.7
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "EventSalvage_ScheduleYes", 
+            "EventSalvage_Fighting"
+        ]
+    },
+    "EventSalvage_ScheduleYes": {
+        "post_wait_freezes": 300,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    1000,
+                    550,
+                    280,
+                    170
+                ],
+                "expected": [
+                    "执行计",
+                    "行计划"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "EventSalvage_AgainstLagging",
+            "EventSalvage_Fighting"
+        ]
+    },
+    "EventSalvage_Fighting": {
+        "pre_wait_freezes": 100,
+        "post_wait_freezes": 100,
+        "rate_limit": 200,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    0,
+                    0,
+                    1100,
+                    720
+                ],
+                "expected": [
+                    "全局经验",
+                    "战斗胜",
+                    "GeK",
+                    "获得",
+                    "战利品",
+                    "结算",
+                    "再次",
+                    "枪种"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target" : [
+                    336,
+                    606,
+                    32,
+                    37
+                ]
+            }
+        },
+        "next": [
+            "EventSalvage_AgainstLagging",
+            "EventSalvage_Fighting",
+            "EventRecycle",
+            "EventSalvage_DoNotStopSchedule",
+            "EventSalvage_StartFight"
+        ]
+    },
+    "EventSalvage_AgainstLagging": {
+        "doc": "防止点到人形导致冻结时间",
+        "pre_wait_freezes": 200,
+        "post_wait_freezes": 200,
+        "rate_limit": 200,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi" : [
+                    909,
+                    31,
+                    133,
+                    81
+                ],
+                "expected": [
+                    "时间"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target" : [
+                    759,
+                    63,
+                    131,
+                    54
+                ]
+            }
+        },
+        "next": [
+            "EventSalvage_AgainstLagging",
+            "EventSalvage_Fighting",
+            "EventRecycle",
+            "EventSalvage_DoNotStopSchedule",
+            "EventSalvage_StartFight"
+        ]
+    },
+    "EventSalvage_DoNotStopSchedule": {
+        "pre_wait_freezes": 200,
+        "post_wait_freezes": 200,
+        "rate_limit": 200,
+        "post_delay": 2000,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi" : [
+                    193,
+                    300,
+                    855,
+                    420
+                ],
+                "template": [
+                    "Button/ButtonNoA.png",
+                    "Button/ButtonNoB.png"
+                ]
+            }
+        },
+        "action": {
+            "type": "LongPress",
+            "param": {
+                "target_offset": [
+                    30,
+                    4,
+                    -30,
+                    -4
+                ],
+                "duration": 60
+            }
+        },
+        "next": [
+            "EventSalvage_DoNotStopSchedule",
+            "EventSalvage_AgainstLagging",
+            "EventSalvage_Fighting"
+        ]
+    }
+}

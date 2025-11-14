@@ -1,0 +1,75 @@
+{
+    "returnToHomePage": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "公用按钮组件/主页按钮_gray.png",
+            "公用按钮组件/主页按钮_black.png"
+        ],
+        "action": "Click",
+        "post_delay": 1500
+    },
+    "returnToHomePageSub": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": [
+            "公用按钮组件/主页按钮_gray.png",
+            "公用按钮组件/主页按钮_black.png"
+        ],
+        "action": "Click",
+        "post_delay": 1500,
+        "next": [
+            "stopTask"
+        ]
+    },
+    "announcementClosed": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": [
+            "公用按钮组件/关闭按钮_gray.png",
+            "公用按钮组件/关闭按钮_black.png",
+            "公用按钮组件/智能导航光屏关闭按钮_gray.png"
+        ],
+        "roi": [
+            1170,
+            0,
+            100,
+            105
+        ],
+        "action": "Click",
+        "post_wait_freezes": {
+            "time": 500,
+            "threshold": 0.8
+        }
+    },
+    "HomePage": {
+        "recognition": "OCR",
+        "expected": "战役推进",
+        "focus": {
+            "start": "返回主页成功",
+            "failed": "返回主页失败"
+        },
+        "pre_delay": 2500
+    },
+    "resourcesLoading": {
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected": "资源加载中",
+        "post_delay": 2500
+    },
+    "backPage": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "roi": [
+            0,
+            0,
+            200,
+            70
+        ],
+        "template": [
+            "公用按钮组件/返回上一页_gray.png",
+            "公用按钮组件/返回上一页_black.png"
+        ],
+        "action": "Click",
+        "post_delay": 1000
+    }
+}

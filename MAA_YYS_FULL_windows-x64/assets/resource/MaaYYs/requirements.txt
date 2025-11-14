@@ -1,0 +1,9 @@
+maafw==4.5.2
+requests
+psutil
+asyncify
+qasync
+cryptography
+semver
+pandas
+Pillow

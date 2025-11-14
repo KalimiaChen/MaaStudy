@@ -1,0 +1,5 @@
+maafw>=5.0.1
+nicegui>=2.21,<3.0
+asyncify
+pillow
+packaging

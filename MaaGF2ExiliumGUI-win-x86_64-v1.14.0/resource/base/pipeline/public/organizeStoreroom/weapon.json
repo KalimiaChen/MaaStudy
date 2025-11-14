@@ -1,0 +1,158 @@
+{
+    "weapon": {
+        "doc": "武器",
+        "next": [
+            "enterWeaponDisassemblyPage"
+        ]
+    },
+    "enterWeaponDisassemblyPage": {
+        "doc": "进入拆解界面",
+        "recognition": "OCR",
+        "expected": "拆解",
+        "roi": [686,9,574,67],
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "weaponDisassemblyPageEntered"
+        ]
+    },
+    "weaponDisassemblyPageEntered": {
+        "doc": "已进入拆解界面",
+        "recognition": "OCR",
+        "expected": "请选择要拆解的道具",
+        "next": [
+            "selectWeaponTab"
+        ]
+    },
+    "selectWeaponTab": {
+        "doc": "选择武器标签页",
+        "recognition": "TemplateMatch",
+        "template": [
+            "仓库/武器亮.png",
+            "仓库/武器暗.png"
+        ],
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "weaponTabSelected"
+        ]
+    },
+    "weaponTabSelected": {
+        "doc": "武器标签页已选中",
+        "recognition": "OCR",
+        "expected": "人形武器",
+        "next": [
+            "selectWeaponLevel"
+        ]
+    },
+    "selectWeaponLevel": {
+        "doc": "点击展开武器等级多选框",
+        "recognition": "OCR",
+        "expected": [
+            "旧式未培养",
+            "标准及以下未培养",
+            "精英及以下未培养"
+        ],
+        "action": "Click",
+        "target": true,
+        "post_wait_freezes": 500,
+        "next": [
+            "chooseWeaponLevel"
+        ]
+    },
+    "chooseWeaponLevel": {
+        "doc": "选择需要拆解的级别",
+        "recognition": "OCR",
+        "expected": "旧式未培养",
+        "action": "Click",
+        "target": true,
+        "post_wait_freezes": 500,
+        "next": [
+            "quickSelectWeapon"
+        ]
+    },
+    "quickSelectWeapon": {
+        "doc": "快捷选择,",
+        "recognition": "OCR",
+        "expected": "快捷选择",
+        "action": "Click",
+        "target": true,
+        "post_wait_freezes": 500,
+        "next": [
+            "有物品可拆解-武器",
+            "exitWeaponDisassembly"
+        ]
+    },
+    "有物品可拆解-武器": {
+        "recognition": "OCR",
+        "expected": "共选",
+        "post_wait_freezes": 500,
+        "next": [
+            "disassemblyWeapon"
+        ]
+    },
+    "disassemblyWeapon": {
+        "doc": "点击拆解键",
+        "recognition": "TemplateMatch",
+        "template": [
+            "仓库/拆解按钮.png"
+        ],
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "findWeaponDisassemblyNotification",
+            "closeWeaponDisassemblyResultByClickingBlank",
+            "weaponDisassemblyResultClosed"
+        ]
+    },
+    "findWeaponDisassemblyNotification": {
+        "doc": "找到拆解通知",
+        "recognition": "OCR",
+        "expected": "是否确认拆解",
+        "roi": [367,302,526,72],
+        "next": [
+            "confirmWeaponDisassemblyNotification"
+        ]
+    },
+    "confirmWeaponDisassemblyNotification": {
+        "doc": "确认拆解通知",
+        "recognition": "OCR",
+        "expected": "确认",
+        "action": "Click",
+        "roi": [783,519,89,42],
+        "post_wait_freezes": 500,
+        "next": [
+            "closeWeaponDisassemblyResultByClickingBlank"
+        ]
+    },
+    "closeWeaponDisassemblyResultByClickingBlank": {
+        "recognition": "OCR",
+        "expected": "点击空白处关闭",
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "weaponDisassemblyResultClosed"
+        ]
+    },
+    "weaponDisassemblyResultClosed": {
+        "recognition": "OCR",
+        "expected": "请选择要拆解的道具",
+        "post_wait_freezes": 500,
+        "next": [
+            "quickSelectWeapon"
+        ]
+    },
+    "exitWeaponDisassembly": {
+        "recognition": "OCR",
+        "expected": "仓库",
+        "roi": [686,9,574,67],
+        "action": "Click",
+        "post_wait_freezes": 500,
+        "next": [
+            "weaponAttachments",
+            "flower",
+            "itemBox",
+            "returnToHomePage"
+        ]
+    }
+}

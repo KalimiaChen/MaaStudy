@@ -1,0 +1,31 @@
+{
+    "name": "@maaxyz/maa-node",
+    "author": "nekosu",
+    "main": "./dist/index-client.js",
+    "types": "./dist/index-client.d.ts",
+    "exports": {
+        ".": {
+            "default": "./dist/index-client.js",
+            "types": "./dist/index-client.d.ts"
+        },
+        "./server": {
+            "default": "./dist/index-server.js",
+            "types": "./dist/index-server.d.ts"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/MaaXYZ/MaaFramework.git"
+    },
+    "engines": {
+        "node": ">= 20.0.0"
+    },
+    "devDependencies": {
+        "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+        "@tsconfig/node20": "^20.1.4",
+        "@types/node": "^20.17.22",
+        "esbuild": "^0.25.0",
+        "prettier": "^3.5.2",
+        "typescript": "^5.8.2"
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "EnterGame":{
+        "doc":"组合任务",
+        "post_wait_freezes": 300,
+        "post_delay":1000,
+        "next": [
+            "HomeAssignmentAgain",
+            "HomeReward",
+            "CloseAnnouncement",
+            "CloseEvent",
+            "HomeAlready",
+            "Server_NeedDownload",
+            "GameStart",
+            "Account",
+            "Server",
+            "GameLoading"
+        ],
+        "interrupt": [
+            "Server_Close",
+            "Server_Empty",
+            "EnterHome",
+            "GetGirl"
+        ]
+    }
+}

@@ -1,0 +1,2526 @@
+{
+  "controller": [
+    {
+      "name": "安卓端",
+      "type": "Adb"
+    },
+    {
+      "name": "桌面端",
+      "type": "Win32",
+      "win32": {
+        "class_regex": ".*",
+        "window_regex": "Visual Studio"
+      }
+    }
+  ],
+  "resource": [
+    {
+      "name": "官服",
+      "path": [
+        "{PROJECT_DIR}/resource/base"
+      ]
+    },
+    {
+      "name": "B 服",
+      "path": [
+        "{PROJECT_DIR}/resource/base",
+        "{PROJECT_DIR}/resource/resource_bilibili"
+      ]
+    },
+    {
+      "name": "美服(dark winter)",
+      "path": [
+        "{PROJECT_DIR}/resource/base",
+        "{PROJECT_DIR}/resource/resource_en"
+      ]
+    },
+    {
+      "name": "国际服(haoplay)",
+      "path": [
+        "{PROJECT_DIR}/resource/base",
+        "{PROJECT_DIR}/resource/resource_en",
+        "{PROJECT_DIR}/resource/resource_glo"
+      ]
+    }
+  ],
+  "name": "少女前线2：追放自动化助手",
+  "custom_title": "歧路双轨",
+  "url": "https://github.com/DarkLingYun/MaaGF2Exilium",
+  "mirrorchyan_rid": "MaaGF2Exilium",
+  "task": [
+    {
+      "name": "社区每日操作",
+      "entry": "CommunityDailyHelper",
+      "check": false
+    },
+    {
+      "name": "启动少女前线2",
+      "entry": "StartGame",
+      "check": true
+    },
+    {
+      "name": "批量使用兑换码",
+      "entry": "BatchRedeemCode",
+      "check": false,
+      "doc": "自动从远端仓库拉取兑换码（不保证兑换码全部可用）"
+    },
+    {
+      "name": "日常任务前准备",
+      "entry": "PrepareDailyTasks",
+      "option": [
+        "领取情报补给体力(限时)",
+        "领取七日签到资源(限时)",
+        "领取邮件",
+        "使用完体力药水",
+        "商城免费每日补给箱购买",
+        "边界推进委托领取"
+      ],
+      "doc": "领取邮件需要主界面背景为人形",
+      "check": true
+    },
+    {
+      "name": "公共区日常",
+      "entry": "PublicAreaDailyTasks",
+      "option": [
+        "访问休息室",
+        "调度室派遣任务",
+        "调度收益领取"
+      ],
+      "check": true
+    },
+    {
+      "name": "活动层",
+      "entry": "开始活动层任务",
+      "option": [
+        "美味烹调",
+        "茶歇一刻",
+        "饮品加成",
+        "领取逸趣导算进度奖励"
+      ],
+      "check": true
+    },
+    {
+      "name": "定向精研(刷配件)",
+      "entry": "AutoSweepBattle",
+      "option": [
+        "配件类型：",
+        "配件效果：",
+        "配件刷取次数："
+      ],
+      "doc": "定向精研体力值每次消耗30"
+    },
+    {
+      "name": "补给作战(人形培养)",
+      "entry": "AutoSweepBattle",
+      "option": [
+        "补给资源：",
+        "补给次数："
+      ],
+      "doc": "战争报告与解析图纸每次10体力, 存量条和金币本每次20体力"
+    },
+    {
+      "name": "心智勘测",
+      "entry": "MindSurveyTask",
+      "option": [
+        "转录序体：",
+        "勘测次数："
+      ],
+      "doc": "心智勘测体力值每次消耗30"
+    },
+    {
+      "name": "模拟作战日常",
+      "entry": "CombatSimulations",
+      "option": [
+        "首领挑战自律",
+        "自动实兵演习",
+        "演习次数",
+        "自动调整战斗速度为 3 倍速",
+        "实兵演习对象战力值范围",
+        "自动领取峰值推定奖励",
+        "极限峰值（0级战斗）"
+      ],
+      "check": true,
+      "doc": "常规设置项过多，可能被遮挡，请在上方区域滚动查看可能被遮挡的设置项"
+    },
+    {
+      "name": "班组日常",
+      "entry": "PlatoonTasks",
+      "option": [
+        "尘烟前线自动作战",
+        "作战模式"
+      ],
+      "check": true,
+      "doc": "尘烟前线目前自动编队导致攻坚战分数普遍较低，请谨慎开启。"
+    },
+    {
+      "name": "版本活动日常",
+      "entry": "VersionActivityTask",
+      "option": [
+        "物资模式活动选择",
+        "物资商品兑换"
+      ],
+      "doc": "物资模式仅识别第五关"
+    },
+    {
+      "name": "易物所商店兑换",
+      "entry": "BulkExchange",
+      "option": [
+        "班组商店兑换",
+        "调度商店兑换",
+        "调度商店不兑换的物品",
+        "讯段交易兑换",
+        "讯段交易不兑换的物品"
+      ]
+    },
+    {
+      "name": "整理仓库",
+      "entry": "organizeStoreroom",
+      "option": [
+        "拆解武器",
+        "拆解武器等级",
+        "拆解武器配件",
+        "拆解武器配件等级",
+        "拆解生长数据",
+        "拆解生长数据等级",
+        "开启道具箱",
+        "物资助力箱奖励类型"
+      ],
+      "check": true,
+      "doc": "常规设置项过多，可能被遮挡，请在上方区域滚动查看可能被遮挡的设置项"
+    },
+    {
+      "name": "领取奖励",
+      "entry": "ClaimRewardTasks",
+      "option": [
+        "每日订单",
+        "远航巡录",
+        "助战",
+        "险境挖掘（限时）",
+        "预演",
+        "动态招募祝福",
+        "暗香赠礼",
+        "铁玫瑰赠礼",
+        "火玫瑰赠礼",
+        "艾莫号许愿池",
+        "模拟习练",
+        "格琳喵的委托",
+        "七天签到限定十连"
+      ],
+      "check": true,
+      "doc": "常规设置项过多，可能被遮挡，请在上方区域滚动查看可能被遮挡的设置项"
+    },
+    {
+      "name": "关闭游戏",
+      "entry": "StopGame"
+    },
+    {
+      "name": "推图助手",
+      "entry": "ClickAssistant",
+      "check": false,
+      "doc": "自动点击【挑战】、【观看】、【跳过】、【作战开始】、【继续作战】等，辅助完成主线及活动关卡。"
+    }
+  ],
+  "option": {
+    "领取情报补给体力(限时)": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "claimIntelligenceSupplyStaminaTaskTimed": {
+              "enabled": true,
+              "focus": {
+                "start": "领取情报补给体力"
+              }
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "claimIntelligenceSupplyStaminaTaskTimed": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "领取七日签到资源(限时)": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "claimSevenDayCheckInResourceTaskTimed": {
+              "enabled": true,
+              "focus": {
+                "start": "领取七日签到资源"
+              }
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "claimSevenDayCheckInResourceTaskTimed": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "领取邮件": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "getNewEmails": {
+              "enabled": true,
+              "focus": {
+                "start": "领取邮件"
+              }
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "getNewEmails": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "使用完体力药水": {
+      "default_case": "NO",
+      "cases": [
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "staminaReplenishment": {
+              "enabled": false
+            }
+          }
+        },
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "staminaReplenishment": {
+              "enabled": true,
+              "focus": {
+                "start": "使用体力药水"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "商城免费每日补给箱购买": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "enterShop": {
+              "enabled": true,
+              "focus": {
+                "start": "免费每日补给箱购买"
+              }
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "enterShop": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "边界推进委托领取": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "enterBoundaryAdvanceAction": {
+              "enabled": true,
+              "focus": {
+                "start": "边界推进委托领取"
+              }
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "enterBoundaryAdvanceAction": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "拆解武器": {
+      "cases": [
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "weapon": {
+              "enabled": false
+            }
+          }
+        },
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "weapon": {
+              "enabled": true
+            }
+          }
+        }
+      ]
+    },
+    "拆解武器等级": {
+      "cases": [
+        {
+          "name": "旧式未培养",
+          "pipeline_override": {
+            "chooseWeaponLevel": {
+              "expected": "旧式未培养"
+            }
+          }
+        },
+        {
+          "name": "标准及以下未培养",
+          "pipeline_override": {
+            "chooseWeaponLevel": {
+              "expected": "标准及以下未培养"
+            }
+          }
+        }
+      ]
+    },
+    "拆解武器配件": {
+      "cases": [
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "weaponAttachments": {
+              "enabled": false
+            }
+          }
+        },
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "weaponAttachments": {
+              "enabled": true
+            }
+          }
+        }
+      ]
+    },
+    "拆解武器配件等级": {
+      "cases": [
+        {
+          "name": "工业级及以下未培养",
+          "pipeline_override": {
+            "chooseLevel": {
+              "expected": "工业级及以下未培养"
+            }
+          }
+        },
+        {
+          "name": "军用级及以下未培养",
+          "pipeline_override": {
+            "chooseLevel": {
+              "expected": "军用级及以下未培养"
+            }
+          }
+        },
+        {
+          "name": "精密级及以下未培养",
+          "pipeline_override": {
+            "chooseLevel": {
+              "expected": "精密级及以下未培养"
+            }
+          }
+        }
+      ]
+    },
+    "拆解生长数据": {
+      "cases": [
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "flower": {
+              "enabled": false
+            }
+          }
+        },
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "flower": {
+              "enabled": true
+            }
+          }
+        }
+      ]
+    },
+    "拆解生长数据等级": {
+      "cases": [
+        {
+          "name": "工业级及以下",
+          "pipeline_override": {
+            "chooseFlowerLevel": {
+              "expected": "工业级及以下"
+            }
+          }
+        },
+        {
+          "name": "军用级及以下",
+          "pipeline_override": {
+            "chooseFlowerLevel": {
+              "expected": "军用级及以下"
+            }
+          }
+        },
+        {
+          "name": "精密级及以下",
+          "pipeline_override": {
+            "chooseFlowerLevel": {
+              "expected": "精密级及以下"
+            }
+          }
+        }
+      ]
+    },
+    "开启道具箱": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "itemBox": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "itemBox": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "物资助力箱奖励类型": {
+      "cases": [
+        {
+          "name": "战场报告",
+          "pipeline_override": {
+            "chooseSupplySupportBoxItem": {
+              "expected": "战场报告"
+            }
+          }
+        },
+        {
+          "name": "解析图纸",
+          "pipeline_override": {
+            "chooseSupplySupportBoxItem": {
+              "expected": "解析图纸"
+            }
+          }
+        },
+        {
+          "name": "增域存量条",
+          "pipeline_override": {
+            "chooseSupplySupportBoxItem": {
+              "expected": "增域存量条"
+            }
+          }
+        },
+        {
+          "name": "转录导体",
+          "pipeline_override": {
+            "chooseSupplySupportBoxItem": {
+              "expected": "转录导体"
+            }
+          }
+        }
+      ]
+    },
+    "访问休息室": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "enterLoungeAction": {
+              "enabled": true,
+              "focus": {
+                "start": "访问休息室"
+              }
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "enterLoungeAction": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "调度室派遣任务": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "enterDispatchCenterAction": {
+              "enabled": true,
+              "focus": {
+                "start": "开始派遣任务"
+              }
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "enterDispatchCenterAction": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "调度收益领取": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "enterSchedulingGainsAction": {
+              "enabled": true,
+              "focus": {
+                "succeeded": "领取调度收益"
+              }
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "enterSchedulingGainsAction": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "补给资源：": {
+      "cases": [
+        {
+          "name": "标准同调_金币本",
+          "pipeline_override": {
+            "supplyOperationType": {
+              "expected": "标准同调"
+            }
+          }
+        },
+        {
+          "name": "战争报告_人形升级",
+          "pipeline_override": {
+            "supplyOperationType": {
+              "expected": "深度搜索"
+            }
+          }
+        },
+        {
+          "name": "解析图纸_武器升级",
+          "pipeline_override": {
+            "supplyOperationType": {
+              "expected": "军备解析"
+            }
+          }
+        },
+        {
+          "name": "增域存量条_提升人形等级上限",
+          "pipeline_override": {
+            "supplyOperationType": {
+              "expected": "决策构象"
+            }
+          }
+        }
+      ]
+    },
+    "补给次数：": {
+      "cases": [
+        {
+          "name": "x1",
+          "pipeline_override": {
+            "UserSetSliderValue": {
+              "enabled": true,
+              "expected": "^1$"
+            },
+            "exitAutoSweepBattleTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "x2",
+          "pipeline_override": {
+            "UserSetSliderValue": {
+              "enabled": true,
+              "expected": "^2$"
+            },
+            "exitAutoSweepBattleTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "x3",
+          "pipeline_override": {
+            "UserSetSliderValue": {
+              "enabled": true,
+              "expected": "^3$"
+            },
+            "exitAutoSweepBattleTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "x4",
+          "pipeline_override": {
+            "UserSetSliderValue": {
+              "enabled": true,
+              "expected": "^4$"
+            },
+            "exitAutoSweepBattleTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "x5",
+          "pipeline_override": {
+            "UserSetSliderValue": {
+              "enabled": true,
+              "expected": "^5$"
+            },
+            "exitAutoSweepBattleTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "x6",
+          "pipeline_override": {
+            "UserSetSliderValue": {
+              "enabled": true,
+              "expected": "^6$"
+            },
+            "exitAutoSweepBattleTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "x7",
+          "pipeline_override": {
+            "UserSetSliderValue": {
+              "enabled": true,
+              "expected": "^7$"
+            },
+            "exitAutoSweepBattleTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "x8",
+          "pipeline_override": {
+            "UserSetSliderValue": {
+              "enabled": true,
+              "expected": "^8$"
+            },
+            "exitAutoSweepBattleTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "x9",
+          "pipeline_override": {
+            "UserSetSliderValue": {
+              "enabled": true,
+              "expected": "^9$"
+            },
+            "exitAutoSweepBattleTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "x10",
+          "pipeline_override": {
+            "UserSetSliderValue": {
+              "enabled": true,
+              "expected": "^10$"
+            },
+            "exitAutoSweepBattleTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "All(耗尽体力)",
+          "pipeline_override": {
+            "UserSetSliderValue": {
+              "enabled": false
+            },
+            "exitAutoSweepBattleTask": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "美味烹调": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "开始美味烹调任务": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "开始美味烹调任务": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "茶歇一刻": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "开始茶歇一刻任务": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "开始茶歇一刻任务": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "饮品加成": {
+      "cases": [
+        {
+          "name": "星标饮品",
+          "pipeline_override": {
+            "选择饮品-茶歇一刻": {
+              "template": "活动层/星标.png"
+            }
+          }
+        },
+        {
+          "name": "战场报告",
+          "pipeline_override": {
+            "选择饮品-茶歇一刻": {
+              "template": "活动层/战场报告.png"
+            }
+          }
+        },
+        {
+          "name": "解析图纸",
+          "pipeline_override": {
+            "选择饮品-茶歇一刻": {
+              "template": "活动层/解析图纸.png"
+            }
+          }
+        },
+        {
+          "name": "存量条",
+          "pipeline_override": {
+            "选择饮品-茶歇一刻": {
+              "template": "活动层/存量条.png"
+            }
+          }
+        },
+        {
+          "name": "转录导体",
+          "pipeline_override": {
+            "选择饮品-茶歇一刻": {
+              "template": "活动层/转录导体.png"
+            }
+          }
+        },
+        {
+          "name": "内存条",
+          "pipeline_override": {
+            "选择饮品-茶歇一刻": {
+              "template": "活动层/内存条.png"
+            }
+          }
+        },
+        {
+          "name": "数据链路",
+          "pipeline_override": {
+            "选择饮品-茶歇一刻": {
+              "template": "活动层/数据链路.png"
+            }
+          }
+        }
+      ]
+    },
+    "领取逸趣导算进度奖励": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "开始逸趣导算任务": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "开始逸趣导算任务": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "配件类型：": {
+      "cases": [
+        {
+          "name": "突击与霰弹枪",
+          "pipeline_override": {
+            "switchAccessoriesTag": {
+              "expected": "^突击"
+            },
+            "supplyOperationType": {
+              "expected": "定向精研"
+            }
+          }
+        },
+        {
+          "name": "冲锋枪与机枪",
+          "pipeline_override": {
+            "switchAccessoriesTag": {
+              "expected": "^冲锋枪"
+            },
+            "supplyOperationType": {
+              "expected": "定向精研"
+            }
+          }
+        },
+        {
+          "name": "狙击枪与刀",
+          "pipeline_override": {
+            "switchAccessoriesTag": {
+              "expected": "^狙击枪"
+            },
+            "supplyOperationType": {
+              "expected": "定向精研"
+            }
+          }
+        },
+        {
+          "name": "手枪",
+          "pipeline_override": {
+            "switchAccessoriesTag": {
+              "expected": "^手枪"
+            },
+            "supplyOperationType": {
+              "expected": "定向精研"
+            }
+          }
+        }
+      ]
+    },
+    "配件效果：": {
+      "cases": [
+        {
+          "name": "异位打击",
+          "pipeline_override": {
+            "selectedEffectsCombination": {
+              "expected": "^异位打击$"
+            }
+          }
+        },
+        {
+          "name": "制胜追进",
+          "pipeline_override": {
+            "selectedEffectsCombination": {
+              "expected": "^制胜追进$"
+            }
+          }
+        },
+        {
+          "name": "双重对策",
+          "pipeline_override": {
+            "selectedEffectsCombination": {
+              "expected": "^双重对策$"
+            }
+          }
+        },
+        {
+          "name": "异位提振",
+          "pipeline_override": {
+            "selectedEffectsCombination": {
+              "expected": "^异位提振$"
+            }
+          }
+        },
+        {
+          "name": "应急修复",
+          "pipeline_override": {
+            "selectedEffectsCombination": {
+              "expected": "^应急修复$"
+            }
+          }
+        },
+        {
+          "name": "减伤支援",
+          "pipeline_override": {
+            "selectedEffectsCombination": {
+              "expected": "^减伤支援$"
+            }
+          }
+        },
+        {
+          "name": "实弹增幅",
+          "pipeline_override": {
+            "selectedEffectsCombination": {
+              "expected": "^实弹增幅$"
+            }
+          }
+        },
+        {
+          "name": "灼热增幅",
+          "pipeline_override": {
+            "selectedEffectsCombination": {
+              "expected": "^灼热增幅$"
+            }
+          }
+        },
+        {
+          "name": "冰点增幅",
+          "pipeline_override": {
+            "selectedEffectsCombination": {
+              "expected": "^冰点增幅$"
+            }
+          }
+        },
+        {
+          "name": "强蚀增幅",
+          "pipeline_override": {
+            "selectedEffectsCombination": {
+              "expected": "^强蚀增幅$"
+            }
+          }
+        },
+        {
+          "name": "电场增幅",
+          "pipeline_override": {
+            "selectedEffectsCombination": {
+              "expected": "^电场增幅$"
+            }
+          }
+        },
+        {
+          "name": "激流增幅",
+          "pipeline_override": {
+            "selectedEffectsCombination": {
+              "expected": "^激流增幅$"
+            }
+          }
+        },
+        {
+          "name": "战术演算",
+          "pipeline_override": {
+            "selectedEffectsCombination": {
+              "expected": "^战术演算$"
+            }
+          }
+        },
+        {
+          "name": "护盾守愈",
+          "pipeline_override": {
+            "selectedEffectsCombination": {
+              "expected": [
+                "^护盾守愈$",
+                "^护盾守"
+              ]
+            }
+          }
+        },
+        {
+          "name": "迫近强攻",
+          "pipeline_override": {
+            "selectedEffectsCombination": {
+              "expected": [
+                "^迫近强攻$",
+                "^迫近强"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "配件刷取次数：": {
+      "cases": [
+        {
+          "name": "x1",
+          "pipeline_override": {
+            "UserSetSliderValueAccessories": {
+              "enabled": true,
+              "expected": "^1$"
+            },
+            "exitAutoSweepBattleTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "x2",
+          "pipeline_override": {
+            "UserSetSliderValueAccessories": {
+              "enabled": true,
+              "expected": "^2$"
+            },
+            "exitAutoSweepBattleTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "x3",
+          "pipeline_override": {
+            "UserSetSliderValueAccessories": {
+              "enabled": true,
+              "expected": "^3$"
+            },
+            "exitAutoSweepBattleTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "x4",
+          "pipeline_override": {
+            "UserSetSliderValueAccessories": {
+              "enabled": true,
+              "expected": "^4$"
+            },
+            "exitAutoSweepBattleTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "x5",
+          "pipeline_override": {
+            "UserSetSliderValueAccessories": {
+              "enabled": true,
+              "expected": "^5$"
+            },
+            "exitAutoSweepBattleTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "x6",
+          "pipeline_override": {
+            "UserSetSliderValueAccessories": {
+              "enabled": true,
+              "expected": "^6$"
+            },
+            "exitAutoSweepBattleTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "x7",
+          "pipeline_override": {
+            "UserSetSliderValueAccessories": {
+              "enabled": true,
+              "expected": "^7$"
+            },
+            "exitAutoSweepBattleTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "x8",
+          "pipeline_override": {
+            "UserSetSliderValueAccessories": {
+              "enabled": true,
+              "expected": "^8$"
+            },
+            "exitAutoSweepBattleTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "x9",
+          "pipeline_override": {
+            "UserSetSliderValueAccessories": {
+              "enabled": true,
+              "expected": "^9$"
+            },
+            "exitAutoSweepBattleTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "x10",
+          "pipeline_override": {
+            "UserSetSliderValueAccessories": {
+              "enabled": true,
+              "expected": "^10$"
+            },
+            "exitAutoSweepBattleTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "All(耗尽体力)",
+          "pipeline_override": {
+            "UserSetSliderValueAccessories": {
+              "enabled": false
+            },
+            "exitAutoSweepBattleTask": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "转录序体：": {
+      "cases": [
+        {
+          "name": "序六",
+          "pipeline_override": {
+            "selectMindSurveyMaterialType": {
+              "template": "心智勘测/06星点光芒闪耀时.png"
+            }
+          }
+        },
+        {
+          "name": "序五",
+          "pipeline_override": {
+            "selectMindSurveyMaterialType": {
+              "template": "心智勘测/05乘于裙摆之上.png"
+            }
+          }
+        },
+        {
+          "name": "序四",
+          "pipeline_override": {
+            "selectMindSurveyMaterialType": {
+              "template": "心智勘测/04最后的命令.png"
+            }
+          }
+        },
+        {
+          "name": "序三",
+          "pipeline_override": {
+            "selectMindSurveyMaterialType": {
+              "template": "心智勘测/03限时替身.png"
+            }
+          }
+        },
+        {
+          "name": "序二",
+          "pipeline_override": {
+            "selectMindSurveyMaterialType": {
+              "template": "心智勘测/02流浪的人.png"
+            }
+          }
+        },
+        {
+          "name": "序一",
+          "pipeline_override": {
+            "selectMindSurveyMaterialType": {
+              "template": "心智勘测/01守望者.png"
+            }
+          }
+        }
+      ]
+    },
+    "勘测次数：": {
+      "cases": [
+        {
+          "name": "x1",
+          "pipeline_override": {
+            "userSetMindSurveyCount": {
+              "enabled": true,
+              "expected": "^1$"
+            },
+            "exitMindSurveyTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "x2",
+          "pipeline_override": {
+            "userSetMindSurveyCount": {
+              "enabled": true,
+              "expected": "^2$"
+            },
+            "exitMindSurveyTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "x3",
+          "pipeline_override": {
+            "userSetMindSurveyCount": {
+              "enabled": true,
+              "expected": "^3$"
+            },
+            "exitMindSurveyTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "x4",
+          "pipeline_override": {
+            "userSetMindSurveyCount": {
+              "enabled": true,
+              "expected": "^4$"
+            },
+            "exitMindSurveyTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "x5",
+          "pipeline_override": {
+            "userSetMindSurveyCount": {
+              "enabled": true,
+              "expected": "^5$"
+            },
+            "exitMindSurveyTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "x6",
+          "pipeline_override": {
+            "userSetMindSurveyCount": {
+              "enabled": true,
+              "expected": "^6$"
+            },
+            "exitMindSurveyTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "x7",
+          "pipeline_override": {
+            "userSetMindSurveyCount": {
+              "enabled": true,
+              "expected": "^7$"
+            },
+            "exitMindSurveyTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "x8",
+          "pipeline_override": {
+            "userSetMindSurveyCount": {
+              "enabled": true,
+              "expected": "^8$"
+            },
+            "exitMindSurveyTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "x9",
+          "pipeline_override": {
+            "userSetMindSurveyCount": {
+              "enabled": true,
+              "expected": "^9$"
+            },
+            "exitMindSurveyTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "x10",
+          "pipeline_override": {
+            "userSetMindSurveyCount": {
+              "enabled": true,
+              "expected": "^10$"
+            },
+            "exitMindSurveyTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "All(耗尽体力)",
+          "pipeline_override": {
+            "userSetMindSurveyCount": {
+              "enabled": false
+            },
+            "exitMindSurveyTask": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "首领挑战自律": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "enterBossFightTask": {
+              "enabled": true,
+              "focus": {
+                "start": "首领挑战自律"
+              }
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "enterBossFightTask": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "自动实兵演习": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "enterCombatExercise": {
+              "enabled": true,
+              "focus": {
+                "start": "自动实兵演习"
+              }
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "enterCombatExercise": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "演习次数": {
+      "cases": [
+        {
+          "name": "x1",
+          "pipeline_override": {
+            "insufficientPassesForCombatExercise": {
+              "expected": "2/3"
+            }
+          }
+        },
+        {
+          "name": "x2",
+          "pipeline_override": {
+            "insufficientPassesForCombatExercise": {
+              "expected": "1/3"
+            }
+          }
+        },
+        {
+          "name": "x3",
+          "pipeline_override": {
+            "insufficientPassesForCombatExercise": {
+              "expected": "0/3"
+            }
+          }
+        }
+      ]
+    },
+    "自动调整战斗速度为 3 倍速": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "changeSpeed": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "changeSpeed": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "实兵演习对象战力值范围": {
+      "cases": [
+        {
+          "name": "23000以下",
+          "pipeline_override": {
+            "challengeOpponentSelection": {
+              "expected": "^[1-9]{0,1}[0-9]{1,2}$|^[1-9][0-9]{3}$|^[1][0-9]{4}$|^[2][0-2][0-9]{3}$"
+            }
+          }
+        },
+        {
+          "name": "15000以下",
+          "pipeline_override": {
+            "challengeOpponentSelection": {
+              "expected": "^[1-9]{0,1}[0-9]{1,3}$|^[1][0-4][0-9]{3}$"
+            }
+          }
+        },
+        {
+          "name": "8000以下",
+          "pipeline_override": {
+            "challengeOpponentSelection": {
+              "expected": "^[1-7]{0,1}[0-9]{1,3}$"
+            }
+          }
+        },
+        {
+          "name": "4000以下",
+          "pipeline_override": {
+            "challengeOpponentSelection": {
+              "expected": "^[1-3]{0,1}[0-9]{1,3}$"
+            }
+          }
+        }
+      ]
+    },
+    "自动领取峰值推定奖励": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "enterPeakValueAssessment": {
+              "enabled": true,
+              "focus": {
+                "start": "领取峰值推定奖励"
+              }
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "enterPeakValueAssessment": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "极限峰值（0级战斗）": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "开始极限峰值任务": {
+              "enabled": true,
+              "focus": {
+                "start": "开始极限峰值任务"
+              }
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "开始极限峰值任务": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "尘烟前线自动作战": {
+      "cases": [
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "enterGunsmokeFrontlineTask": {
+              "enabled": false
+            }
+          }
+        },
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "enterGunsmokeFrontlineTask": {
+              "enabled": true
+            }
+          }
+        }
+      ]
+    },
+    "作战模式": {
+      "cases": [
+        {
+          "name": "前哨战",
+          "pipeline_override": {
+            "selectGunsmokeFrontlineCombatType": {
+              "expected": "前哨战"
+            }
+          }
+        },
+        {
+          "name": "攻坚战",
+          "pipeline_override": {
+            "selectGunsmokeFrontlineCombatType": {
+              "expected": "攻坚战"
+            }
+          }
+        }
+      ]
+    },
+    "物资模式活动选择": {
+      "cases": [
+        {
+          "name": "歧路双轨·下篇",
+          "pipeline_override": {
+            "clickVersionActivityTagButton": {
+              "expected": [
+                "歧路双轨",
+                "歧路",
+                "双轨",
+                "路双"
+              ]
+            },
+            "enterVersionActivityItemExchange": {
+              "expected": [
+                "人形互助站"
+              ]
+            },
+            "switchVersionActivityChapter": {
+              "enabled": true,
+              "expected": [
+                "^歧路双轨.*下篇$",
+                "^双轨.*下篇$"
+              ]
+            },
+            "selectExchangeType": {
+              "enabled": true,
+              "expected": [
+                "^下篇$"
+              ]
+            },
+            "selectResourceModeLevel": {
+              "doc": "选择物资模式关卡",
+              "recognition": "TemplateMatch",
+              "template": "版本活动/下篇歧路物资5.png",
+              "action": "Click",
+              "roi": [
+                758,
+                329,
+                154,
+                42
+              ]
+            }
+          }
+        },
+        {
+          "name": "歧路双轨·上篇",
+          "pipeline_override": {
+            "clickVersionActivityTagButton": {
+              "expected": [
+                "歧路双轨",
+                "歧路",
+                "双轨",
+                "路双"
+              ]
+            },
+            "enterVersionActivityItemExchange": {
+              "expected": [
+                "人形互助站"
+              ]
+            },
+            "switchVersionActivityChapter": {
+              "enabled": true,
+              "expected": [
+                "^歧路双轨.*上篇$",
+                "^双轨.*上篇$"
+              ]
+            },
+            "selectExchangeType": {
+              "enabled": true,
+              "expected": [
+                "^上篇$"
+              ]
+            },
+            "selectResourceModeLevel": {
+              "doc": "选择物资模式关卡",
+              "recognition": "TemplateMatch",
+              "template": "版本活动/歧路物资5.png",
+              "action": "Click",
+              "roi": [
+                572,
+                269,
+                424,
+                163
+              ]
+            }
+          }
+        },
+        {
+          "name": "虚境新始",
+          "pipeline_override": {
+            "clickVersionActivityTagButton": {
+              "expected": [
+                "虚境",
+                "新始"
+              ]
+            },
+            "enterVersionActivityItemExchange": {
+              "expected": [
+                "绿洲补给站",
+                "补给站",
+                "绿洲补给",
+                "洲补给"
+              ]
+            }
+          }
+        },
+        {
+          "name": "循迹追演",
+          "pipeline_override": {
+            "clickVersionActivityTagButton": {
+              "expected": [
+                "循迹追演",
+                "追演",
+                "循迹",
+                "循迹追",
+                "迹追演"
+              ]
+            },
+            "enterVersionActivityItemExchange": {
+              "expected": [
+                "幕后补给",
+                "幕后补",
+                "后补给"
+              ]
+            }
+          }
+        },
+        {
+          "name": "火花之罪·下篇",
+          "pipeline_override": {
+            "clickVersionActivityTagButton": {
+              "expected": [
+                "火花之罪",
+                "火花",
+                "花之",
+                "之罪"
+              ]
+            },
+            "enterVersionActivityItemExchange": {
+              "expected": [
+                "安全屋"
+              ]
+            },
+            "selectExchangeType": {
+              "enabled": true,
+              "expected": [
+                "^安全屋.*下篇$"
+              ]
+            },
+            "enterVersionActivityResourceSweep": {
+              "enabled": true,
+              "expected": [
+                "^战术.*下篇$"
+              ]
+            }
+          }
+        },
+        {
+          "name": "火花之罪·上篇",
+          "pipeline_override": {
+            "clickVersionActivityTagButton": {
+              "expected": [
+                "火花之罪",
+                "火花",
+                "花之",
+                "之罪"
+              ]
+            },
+            "enterVersionActivityItemExchange": {
+              "expected": [
+                "安全屋"
+              ]
+            },
+            "selectExchangeType": {
+              "enabled": true,
+              "expected": [
+                "^安全屋.*上篇$"
+              ]
+            },
+            "enterVersionActivityResourceSweep": {
+              "enabled": true,
+              "expected": [
+                "^战术.*上篇$"
+              ]
+            }
+          }
+        },
+        {
+          "name": "沉没夜潮",
+          "pipeline_override": {
+            "clickVersionActivityTagButton": {
+              "expected": [
+                "沉没夜潮",
+                "沉没夜",
+                "沉没",
+                "夜潮",
+                "没夜"
+              ]
+            },
+            "enterVersionActivityItemExchange": {
+              "expected": [
+                "筹码兑换处",
+                "筹码",
+                "兑换处"
+              ]
+            }
+          }
+        },
+        {
+          "name": "心跳游乐园（美服/国际服）",
+          "pipeline_override": {
+            "clickVersionActivityTagButton": {
+              "expected": [
+                "心跳游乐园",
+                "游乐园",
+                "心跳游",
+                "心跳",
+                "乐园"
+              ]
+            },
+            "enterVersionActivityItemExchange": {
+              "expected": [
+                "纪念品商店",
+                "纪念品",
+                "商店"
+              ]
+            }
+          }
+        },
+        {
+          "name": "镜茧与囚蝶(已结束)",
+          "pipeline_override": {
+            "clickVersionActivityTagButton": {
+              "expected": [
+                "镜茧与囚蝶",
+                "与囚蝶",
+                "镜茧与",
+                "镜茧",
+                "囚蝶"
+              ]
+            },
+            "enterVersionActivityItemExchange": {
+              "expected": [
+                "数据整合程序",
+                "整合程序",
+                "数据整合"
+              ]
+            }
+          }
+        },
+        {
+          "name": "错位锚定·下篇",
+          "pipeline_override": {
+            "clickVersionActivityTagButton": {
+              "expected": [
+                "错位锚定"
+              ]
+            },
+            "enterVersionActivityItemExchange": {
+              "expected": [
+                "临时据点"
+              ]
+            },
+            "switchVersionActivityChapter": {
+              "enabled": true,
+              "expected": [
+                "^错位.*下篇$"
+              ]
+            },
+            "selectExchangeType": {
+              "enabled": true,
+              "expected": [
+                "^临时.*下篇$"
+              ]
+            }
+          }
+        },
+        {
+          "name": "错位锚定·上篇",
+          "pipeline_override": {
+            "clickVersionActivityTagButton": {
+              "expected": [
+                "错位锚定"
+              ]
+            },
+            "enterVersionActivityItemExchange": {
+              "expected": [
+                "临时据点"
+              ]
+            },
+            "switchVersionActivityChapter": {
+              "enabled": true,
+              "expected": [
+                "^错位.*上篇$"
+              ]
+            },
+            "selectExchangeType": {
+              "enabled": true,
+              "expected": [
+                "^临时.*上篇$"
+              ]
+            }
+          }
+        },
+        {
+          "name": "溯回时光之隙（上）(美服/国际服)(已结束)",
+          "pipeline_override": {
+            "clickVersionActivityTagButton": {
+              "expected": [
+                "溯回时光之隙",
+                "^溯回"
+              ]
+            },
+            "switchVersionActivityChapter": {
+              "enabled": true,
+              "expected": [
+                "纪念日礼赞"
+              ]
+            },
+            "enterVersionActivityItemExchange": {
+              "expected": [
+                "时光小筑"
+              ]
+            },
+            "selectExchangeType": {
+              "enabled": true,
+              "expected": [
+                "时光小筑.*上篇"
+              ]
+            }
+          }
+        },
+        {
+          "name": "溯回时光之隙（下）(美服/国际服)(已结束)",
+          "pipeline_override": {
+            "clickVersionActivityTagButton": {
+              "expected": [
+                "溯回时光之隙",
+                "^溯回"
+              ]
+            },
+            "switchVersionActivityChapter": {
+              "enabled": true,
+              "expected": [
+                "循迹追演"
+              ]
+            },
+            "enterVersionActivityItemExchange": {
+              "expected": [
+                "时光小筑"
+              ]
+            },
+            "selectExchangeType": {
+              "enabled": true,
+              "expected": [
+                "时光小筑.*下篇"
+              ]
+            }
+          }
+        },
+        {
+          "name": "烟火重燃之时(已结束)",
+          "pipeline_override": {
+            "clickVersionActivityTagButton": {
+              "expected": [
+                "烟火重燃之时"
+              ]
+            },
+            "enterVersionActivityItemExchange": {
+              "expected": [
+                "积分找换所"
+              ]
+            }
+          }
+        },
+        {
+          "name": "匿影而生(已结束)",
+          "pipeline_override": {
+            "clickVersionActivityTagButton": {
+              "expected": [
+                "匿影而生"
+              ]
+            },
+            "enterVersionActivityItemExchange": {
+              "expected": [
+                "情报置换处"
+              ]
+            }
+          }
+        },
+        {
+          "name": "素银匿信(已结束)",
+          "pipeline_override": {
+            "clickVersionActivityTagButton": {
+              "expected": [
+                "素银匿信"
+              ]
+            },
+            "enterVersionActivityItemExchange": {
+              "expected": [
+                "冬日礼品铺"
+              ]
+            }
+          }
+        },
+        {
+          "name": "驻足之地（已结束）",
+          "pipeline_override": {
+            "clickVersionActivityTagButton": {
+              "expected": [
+                "驻足之地"
+              ]
+            },
+            "enterVersionActivityItemExchange": {
+              "expected": [
+                "物资小摊"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "物资商品兑换": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "enterVersionActivityItemExchange": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "enterVersionActivityItemExchange": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "班组商店兑换": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "enterPlatoonExchangeTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "enterPlatoonExchangeTask": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "调度商店兑换": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "enterdispatchCenterExchangeTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "enterdispatchCenterExchangeTask": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "调度商店不兑换的物品": {
+      "cases": [
+        {
+          "name": "全部兑换",
+          "pipeline_override": {}
+        },
+        {
+          "name": "紫色心意礼盒",
+          "pipeline_override": {
+            "selectdispatchCenterItem": {
+              "template": [
+                "集中兑换/调度商店/访问许可.png",
+                "集中兑换/调度商店/存量条T2.png",
+                "集中兑换/调度商店/存量条T3.png",
+                "集中兑换/调度商店/存量条T4.png",
+                "集中兑换/调度商店/战场报告.png",
+                "集中兑换/调度商店/萨狄斯金.png",
+                "集中兑换/调度商店/解析图纸.png",
+                "集中兑换/调度商店/奇忆甄选暗流.png",
+                "集中兑换/调度商店/奇忆甄选火线.png",
+                "集中兑换/调度商店/奇忆甄选信念.png"
+              ]
+            }
+          }
+        },
+        {
+          "name": "奇忆甄选",
+          "pipeline_override": {
+            "selectdispatchCenterItem": {
+              "template": [
+                "集中兑换/调度商店/访问许可.png",
+                "集中兑换/调度商店/心意礼盒.png",
+                "集中兑换/调度商店/存量条T2.png",
+                "集中兑换/调度商店/存量条T3.png",
+                "集中兑换/调度商店/存量条T4.png",
+                "集中兑换/调度商店/战场报告.png",
+                "集中兑换/调度商店/萨狄斯金.png",
+                "集中兑换/调度商店/解析图纸.png"
+              ]
+            }
+          }
+        },
+        {
+          "name": "紫色心意礼盒和奇忆甄选",
+          "pipeline_override": {
+            "selectdispatchCenterItem": {
+              "template": [
+                "集中兑换/调度商店/访问许可.png",
+                "集中兑换/调度商店/存量条T2.png",
+                "集中兑换/调度商店/存量条T3.png",
+                "集中兑换/调度商店/存量条T4.png",
+                "集中兑换/调度商店/战场报告.png",
+                "集中兑换/调度商店/萨狄斯金.png",
+                "集中兑换/调度商店/解析图纸.png"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "讯段交易兑换": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "enterBossChallengeExchangeTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "enterBossChallengeExchangeTask": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "讯段交易不兑换的物品": {
+      "cases": [
+        {
+          "name": "全部兑换",
+          "pipeline_override": {}
+        },
+        {
+          "name": "萨狄斯金",
+          "pipeline_override": {
+            "selectBossChallengeItem": {
+              "template": [
+                "集中兑换/讯段交易/塞布丽娜心智存档.png",
+                "集中兑换/讯段交易/访问许可.png",
+                "集中兑换/讯段交易/基原信息核.png",
+                "集中兑换/讯段交易/次世代内存条.png"
+              ]
+            }
+          }
+        },
+        {
+          "name": "次世代内存条",
+          "pipeline_override": {
+            "selectBossChallengeItem": {
+              "template": [
+                "集中兑换/讯段交易/塞布丽娜心智存档.png",
+                "集中兑换/讯段交易/访问许可.png",
+                "集中兑换/讯段交易/基原信息核.png",
+                "集中兑换/讯段交易/萨狄斯金.png"
+              ]
+            }
+          }
+        },
+        {
+          "name": "萨狄斯金和次世代内存条",
+          "pipeline_override": {
+            "selectBossChallengeItem": {
+              "template": [
+                "集中兑换/讯段交易/塞布丽娜心智存档.png",
+                "集中兑换/讯段交易/访问许可.png",
+                "集中兑换/讯段交易/基原信息核.png"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "每日订单": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "enterCommissionToClaimTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "enterCommissionToClaimTask": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "远航巡录": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "enterPassToClaimTask": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "enterPassToClaimTask": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "助战": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "enterPersonalInformationPage": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "enterPersonalInformationPage": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "险境挖掘（限时）": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "enterDangerousExcavation": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "enterDangerousExcavation": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "预演": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "enterTrial": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "enterTrial": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "动态招募祝福": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "开始动态招募祝福任务": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "开始动态招募祝福任务": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "暗香赠礼": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "开始暗香赠礼任务": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "开始暗香赠礼任务": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "铁玫瑰赠礼": {
+      "cases": [
+        {
+          "name": "战场报告",
+          "pipeline_override": {
+            "选择铁玫瑰赠礼奖励道具": {
+              "expected": "战场报告"
+            }
+          }
+        },
+        {
+          "name": "解析图纸",
+          "pipeline_override": {
+            "选择铁玫瑰赠礼奖励道具": {
+              "expected": "解析图纸"
+            }
+          }
+        },
+        {
+          "name": "萨狄斯金",
+          "pipeline_override": {
+            "选择铁玫瑰赠礼奖励道具": {
+              "expected": "萨狄斯金"
+            }
+          }
+        }
+      ]
+    },
+    "火玫瑰赠礼": {
+      "cases": [
+        {
+          "name": "序六",
+          "pipeline_override": {
+            "选择火玫瑰赠礼奖励道具": {
+              "expected": "序六"
+            }
+          }
+        },
+        {
+          "name": "序五",
+          "pipeline_override": {
+            "选择火玫瑰赠礼奖励道具": {
+              "expected": "序五"
+            }
+          }
+        },
+        {
+          "name": "序四",
+          "pipeline_override": {
+            "选择火玫瑰赠礼奖励道具": {
+              "expected": "序四"
+            }
+          }
+        },
+        {
+          "name": "序三",
+          "pipeline_override": {
+            "选择火玫瑰赠礼奖励道具": {
+              "expected": "序三"
+            }
+          }
+        }
+      ]
+    },
+    "艾莫号许愿池": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "开始艾莫号许愿池任务": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "开始艾莫号许愿池任务": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "模拟习练": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "开始模拟习练任务": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "开始模拟习练任务": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "格琳喵的委托": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "开始格琳喵的委托任务": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "开始格琳喵的委托任务": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "七天签到限定十连": {
+      "cases": [
+        {
+          "name": "YES",
+          "pipeline_override": {
+            "开始七天签到限定十连任务": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "NO",
+          "pipeline_override": {
+            "开始七天签到限定十连任务": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    }
+  },
+  "version": "v1.14.0"
+}
